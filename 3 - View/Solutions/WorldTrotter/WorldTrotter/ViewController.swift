@@ -57,9 +57,15 @@ class ViewController: UIViewController, UITextFieldDelegate {
   
   // MARK: - UITextFieldDelegate
   
-  func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {    
+  func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+    guard isDecimalString(string) else {
+      return false
+    }
+    
     let alreadyHasDecimalSeperator = (textField.text?.contains(".") == true)
     let newStringHasDecimalSeperator = string.contains(".")
+    
+    //NSCharacterSet.decimalDigits
     
     if alreadyHasDecimalSeperator && newStringHasDecimalSeperator {
       return false
@@ -76,6 +82,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
     } else {
       celsiusLabel.text = "???"
     }
+  }
+  
+  func isDecimalString(_ str: String) -> Bool {
+    let notDigits = NSCharacterSet.decimalDigits.inverted
+    return (str.rangeOfCharacter(from: notDigits) == nil)
   }
 }
 

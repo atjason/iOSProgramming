@@ -40,7 +40,7 @@ class ConversionViewController: UIViewController, UITextFieldDelegate {
     
     updateCelsius()
     
-    fahrenheitTextField.becomeFirstResponder()
+    //fahrenheitTextField.becomeFirstResponder()
   }
   
   // MARK: - Action

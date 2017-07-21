@@ -31,7 +31,7 @@
                                 <rect key="frame" x="138" y="129" width="98" height="30"/>
                                 <state key="normal" title="Next Question"/>
                                 <connections>
-                                    <action selector="showNextQuestion:" destination="BYZ-38-t0r" eventType="touchDown" id="ZXu-KS-vda"/>
+                                    <action selector="showNextQuestion:" destination="BYZ-38-t0r" eventType="touchDown" id="B8L-f5-1pm"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TAW-9V-5mv">

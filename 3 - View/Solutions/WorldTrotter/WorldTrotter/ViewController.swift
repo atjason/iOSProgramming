@@ -10,6 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
   
+  @IBOutlet weak var fahrenheitTextField: UITextField!
   @IBOutlet weak var celsiusLabel: UILabel!
 
   override func viewDidLoad() {
@@ -24,6 +25,10 @@ class ViewController: UIViewController {
     } else {
       celsiusLabel.text = "???"
     }
+  }
+  
+  @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
+    fahrenheitTextField.resignFirstResponder()
   }
 }
 

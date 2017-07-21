@@ -56,6 +56,7 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="0.96078431372549022" green="0.95686274509803915" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="gnj-8h-AJi" firstAttribute="centerX" secondItem="P6D-1d-ANY" secondAttribute="centerX" id="AUh-E2-i3b"/>
                             <constraint firstItem="P6D-1d-ANY" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="AnZ-wq-3TE"/>
@@ -68,12 +69,21 @@
                             <constraint firstItem="lYA-yW-nu6" firstAttribute="centerX" secondItem="P6D-1d-ANY" secondAttribute="centerX" id="s8N-SA-mH5"/>
                             <constraint firstItem="CDT-S2-FHu" firstAttribute="top" secondItem="P6D-1d-ANY" secondAttribute="bottom" constant="10" id="vPt-4Q-nXw"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="Uls-8y-AbB" appends="YES" id="JHc-Wt-njr"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="celsiusLabel" destination="PYX-gY-HhZ" id="VkK-Z5-LOy"/>
+                        <outlet property="fahrenheitTextField" destination="P6D-1d-ANY" id="nNX-O8-hy2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Uls-8y-AbB">
+                    <connections>
+                        <action selector="dismissKeyboard:" destination="BYZ-38-t0r" id="zrQ-d9-LLh"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
         </scene>
     </scenes>

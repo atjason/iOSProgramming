@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITextFieldDelegate {
+class ConversionViewController: UIViewController, UITextFieldDelegate {
   
   @IBOutlet weak var fahrenheitTextField: UITextField!
   @IBOutlet weak var celsiusLabel: UILabel!
@@ -85,7 +85,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
   }
   
   func isDecimalString(_ str: String) -> Bool {
-    let notDigits = NSCharacterSet.decimalDigits.inverted
+    var notDigits = NSCharacterSet.decimalDigits.inverted
+    notDigits.remove(".")
     return (str.rangeOfCharacter(from: notDigits) == nil)
   }
 }

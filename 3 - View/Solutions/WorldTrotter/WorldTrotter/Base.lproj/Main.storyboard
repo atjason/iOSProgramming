@@ -21,12 +21,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="212" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lQU-uo-gG3">
-                                <rect key="frame" x="132" y="60" width="111" height="84"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="value" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="P6D-1d-ANY">
+                                <rect key="frame" x="105" y="60" width="165" height="84"/>
+                                <color key="textColor" red="0.88235294119999996" green="0.34509803919999998" blue="0.16078431369999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="70"/>
-                                <color key="textColor" red="0.88235294117647056" green="0.34509803921568627" blue="0.16078431372549018" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="degrees Faherenheit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CDT-S2-FHu">
                                 <rect key="frame" x="25" y="154" width="325" height="43"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="36"/>
@@ -54,16 +54,16 @@
                         </subviews>
                         <color key="backgroundColor" red="0.96078431372549022" green="0.95686274509803915" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="PYX-gY-HhZ" firstAttribute="centerX" secondItem="lQU-uo-gG3" secondAttribute="centerX" id="Agq-AQ-eS8"/>
-                            <constraint firstItem="CDT-S2-FHu" firstAttribute="top" secondItem="lQU-uo-gG3" secondAttribute="bottom" constant="10" id="CxT-oE-Qax"/>
+                            <constraint firstItem="gnj-8h-AJi" firstAttribute="centerX" secondItem="P6D-1d-ANY" secondAttribute="centerX" id="AUh-E2-i3b"/>
+                            <constraint firstItem="P6D-1d-ANY" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="AnZ-wq-3TE"/>
                             <constraint firstItem="PYX-gY-HhZ" firstAttribute="top" secondItem="gnj-8h-AJi" secondAttribute="bottom" constant="40" id="Kbf-5s-fNB"/>
-                            <constraint firstItem="lQU-uo-gG3" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="QHJ-1J-4pk"/>
-                            <constraint firstItem="lYA-yW-nu6" firstAttribute="centerX" secondItem="lQU-uo-gG3" secondAttribute="centerX" id="SQf-YH-FvQ"/>
+                            <constraint firstItem="PYX-gY-HhZ" firstAttribute="centerX" secondItem="P6D-1d-ANY" secondAttribute="centerX" id="RzU-0S-509"/>
                             <constraint firstItem="gnj-8h-AJi" firstAttribute="top" secondItem="CDT-S2-FHu" secondAttribute="bottom" constant="40" id="Vmh-hT-Chu"/>
-                            <constraint firstItem="gnj-8h-AJi" firstAttribute="centerX" secondItem="lQU-uo-gG3" secondAttribute="centerX" id="YS9-oo-vkv"/>
+                            <constraint firstItem="P6D-1d-ANY" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="40" id="XmD-Vj-IPf"/>
                             <constraint firstItem="lYA-yW-nu6" firstAttribute="top" secondItem="PYX-gY-HhZ" secondAttribute="bottom" constant="10" id="f5T-jH-FcK"/>
-                            <constraint firstItem="CDT-S2-FHu" firstAttribute="centerX" secondItem="lQU-uo-gG3" secondAttribute="centerX" id="rOF-Pm-uTl"/>
-                            <constraint firstItem="lQU-uo-gG3" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="40" id="xji-mz-HJD"/>
+                            <constraint firstItem="CDT-S2-FHu" firstAttribute="centerX" secondItem="P6D-1d-ANY" secondAttribute="centerX" id="pdS-qi-j1U"/>
+                            <constraint firstItem="lYA-yW-nu6" firstAttribute="centerX" secondItem="P6D-1d-ANY" secondAttribute="centerX" id="s8N-SA-mH5"/>
+                            <constraint firstItem="CDT-S2-FHu" firstAttribute="top" secondItem="P6D-1d-ANY" secondAttribute="bottom" constant="10" id="vPt-4Q-nXw"/>
                         </constraints>
                     </view>
                 </viewController>

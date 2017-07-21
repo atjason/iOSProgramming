@@ -74,7 +74,7 @@
                             <outletCollection property="gestureRecognizers" destination="Uls-8y-AbB" appends="YES" id="JHc-Wt-njr"/>
                         </connections>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Convert" id="a2r-ZY-gvi"/>
+                    <tabBarItem key="tabBarItem" title="Convert" image="ConvertIcon" id="a2r-ZY-gvi"/>
                     <connections>
                         <outlet property="celsiusLabel" destination="PYX-gY-HhZ" id="VkK-Z5-LOy"/>
                         <outlet property="fahrenheitTextField" destination="P6D-1d-ANY" id="nNX-O8-hy2"/>
@@ -97,7 +97,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </mapView>
-                    <tabBarItem key="tabBarItem" title="Map" id="54S-Gk-JLF"/>
+                    <tabBarItem key="tabBarItem" title="Map" image="MapIcon" id="54S-Gk-JLF"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nu3-jM-Hww" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -122,4 +122,8 @@
             <point key="canvasLocation" x="140" y="137.18140929535232"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="ConvertIcon" width="48" height="32"/>
+        <image name="MapIcon" width="48" height="32"/>
+    </resources>
 </document>

@@ -9,11 +9,21 @@
 import UIKit
 
 class ViewController: UIViewController {
+  
+  @IBOutlet weak var celsiusLabel: UILabel!
 
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    
+    celsiusLabel.text = "???"
+  }
+  
+  @IBAction func fahrenheitChanged(_ sender: UITextField) {
+    if let text = sender.text {
+      celsiusLabel.text = text
+    } else {
+      celsiusLabel.text = "???"
+    }
   }
 }
 

@@ -26,6 +26,9 @@
                                 <color key="textColor" red="0.88235294119999996" green="0.34509803919999998" blue="0.16078431369999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="70"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="fahrenheitChanged:" destination="BYZ-38-t0r" eventType="editingChanged" id="Jwm-Du-N7W"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="degrees Faherenheit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CDT-S2-FHu">
                                 <rect key="frame" x="25" y="154" width="325" height="43"/>
@@ -66,6 +69,9 @@
                             <constraint firstItem="CDT-S2-FHu" firstAttribute="top" secondItem="P6D-1d-ANY" secondAttribute="bottom" constant="10" id="vPt-4Q-nXw"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="celsiusLabel" destination="PYX-gY-HhZ" id="VkK-Z5-LOy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

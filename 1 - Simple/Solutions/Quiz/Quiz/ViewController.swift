@@ -63,7 +63,12 @@ class ViewController: UIViewController {
     currentQuestionLabelCenterXLayout.constant += view.frame.width
     nextQuestionLabelCenterXLayout.constant += view.frame.width
     
-    UIView.animate(withDuration: 0.5, animations: { 
+    UIView.animate(withDuration: 0.5, delay: 0,
+                   usingSpringWithDamping: 0.5,
+                   initialSpringVelocity: 0.2,
+                   options: [],
+                   animations: {
+                    
       self.currentQuestionLabel.alpha = 0
       self.nextQuestionLabel.alpha = 1
       

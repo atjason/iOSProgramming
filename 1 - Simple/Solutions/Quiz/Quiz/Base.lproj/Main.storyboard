@@ -56,22 +56,24 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="TAW-9V-5mv" firstAttribute="centerX" secondItem="bj4-x7-oNz" secondAttribute="centerX" id="0fC-uJ-T7m"/>
+                            <constraint firstItem="dBc-zg-sLW" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="2fD-bd-bUb"/>
                             <constraint firstItem="dBc-zg-sLW" firstAttribute="top" secondItem="bj4-x7-oNz" secondAttribute="bottom" constant="20" id="98g-GV-At6"/>
                             <constraint firstItem="bj4-x7-oNz" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="BnR-um-evc"/>
-                            <constraint firstItem="dBc-zg-sLW" firstAttribute="centerX" secondItem="bj4-x7-oNz" secondAttribute="centerX" id="Mab-fr-HJx"/>
+                            <constraint firstItem="k1v-LB-HTt" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="K8F-Jf-PB9"/>
+                            <constraint firstItem="TAW-9V-5mv" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="VPE-db-JUs"/>
                             <constraint firstItem="TAW-9V-5mv" firstAttribute="top" secondItem="k1v-LB-HTt" secondAttribute="bottom" constant="20" id="XOd-RL-3fq"/>
                             <constraint firstItem="bj4-x7-oNz" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="60" id="abd-r2-1Ey"/>
-                            <constraint firstItem="k1v-LB-HTt" firstAttribute="centerX" secondItem="bj4-x7-oNz" secondAttribute="centerX" id="iun-xb-DQd"/>
+                            <constraint firstItem="rRc-hx-9zE" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="fFk-i9-z3H"/>
                             <constraint firstItem="k1v-LB-HTt" firstAttribute="top" secondItem="dBc-zg-sLW" secondAttribute="bottom" constant="180" id="jgP-fD-zlW"/>
                             <constraint firstItem="rRc-hx-9zE" firstAttribute="top" secondItem="bj4-x7-oNz" secondAttribute="top" id="mUu-vA-SQd"/>
-                            <constraint firstItem="rRc-hx-9zE" firstAttribute="centerX" secondItem="bj4-x7-oNz" secondAttribute="centerX" id="tOY-aO-h5C"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="answerLabel" destination="k1v-LB-HTt" id="XXT-tw-nOS"/>
                         <outlet property="currentQuestionLabel" destination="bj4-x7-oNz" id="8ew-9D-mS2"/>
+                        <outlet property="currentQuestionLabelCenterXLayout" destination="BnR-um-evc" id="a4C-IN-0Ln"/>
                         <outlet property="nextQuestionLabel" destination="rRc-hx-9zE" id="80Q-T7-htA"/>
+                        <outlet property="nextQuestionLabelCenterXLayout" destination="fFk-i9-z3H" id="GTn-Wo-QSd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

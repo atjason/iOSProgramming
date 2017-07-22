@@ -12,6 +12,8 @@ class ViewController: UIViewController {
   
   @IBOutlet weak var currentQuestionLabel: UILabel!
   @IBOutlet weak var nextQuestionLabel: UILabel!
+  @IBOutlet weak var currentQuestionLabelCenterXLayout: NSLayoutConstraint!
+  @IBOutlet weak var nextQuestionLabelCenterXLayout: NSLayoutConstraint!
   @IBOutlet weak var answerLabel: UILabel!
   
   let questions = [
@@ -32,6 +34,8 @@ class ViewController: UIViewController {
     currentQuestionLabel.text = questions[currentQuestionIndex]
     
     nextQuestionLabel.alpha = 0
+    
+    resetLayoutConstraint()
   }
   
   // MARK: - Action
@@ -54,14 +58,29 @@ class ViewController: UIViewController {
   // MARK: - Helper
   
   func animateLabelTranstitions() {
+    view.layoutIfNeeded()
+    
+    currentQuestionLabelCenterXLayout.constant += view.frame.width
+    nextQuestionLabelCenterXLayout.constant += view.frame.width
+    
     UIView.animate(withDuration: 0.5, animations: { 
       self.currentQuestionLabel.alpha = 0
       self.nextQuestionLabel.alpha = 1
       
+      self.view.layoutIfNeeded()
+      
     }) { (result) in
       assert(result)
+      
       swap(&self.currentQuestionLabel, &self.nextQuestionLabel)
+      swap(&self.currentQuestionLabelCenterXLayout, &self.nextQuestionLabelCenterXLayout)
+      
+      self.resetLayoutConstraint()
     }
+  }
+  
+  func resetLayoutConstraint() {
+    nextQuestionLabelCenterXLayout.constant = -view.frame.width
   }
 }
 

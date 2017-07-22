@@ -34,6 +34,8 @@ class ConversionViewController: UIViewController, UITextFieldDelegate {
     numberFormater.maximumFractionDigits = 1
     return numberFormater
   }()
+  
+  private let decimalSeperator = Locale.current.decimalSeparator ?? "."
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -64,11 +66,9 @@ class ConversionViewController: UIViewController, UITextFieldDelegate {
       return false
     }
     
-    let alreadyHasDecimalSeperator = (textField.text?.contains(".") == true)
-    let newStringHasDecimalSeperator = string.contains(".")
-    
-    //NSCharacterSet.decimalDigits
-    
+    let alreadyHasDecimalSeperator = (textField.text?.contains(decimalSeperator) == true)
+    let newStringHasDecimalSeperator = string.contains(decimalSeperator)
+        
     if alreadyHasDecimalSeperator && newStringHasDecimalSeperator {
       return false
     } else {
@@ -88,7 +88,7 @@ class ConversionViewController: UIViewController, UITextFieldDelegate {
   
   func isDecimalString(_ str: String) -> Bool {
     var notDigits = NSCharacterSet.decimalDigits.inverted
-    notDigits.remove(".")
+    notDigits.remove(charactersIn: decimalSeperator)
     return (str.rangeOfCharacter(from: notDigits) == nil)
   }
 }

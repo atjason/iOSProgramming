@@ -47,6 +47,12 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rRc-hx-9zE">
+                                <rect key="frame" x="158" y="80" width="58.5" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -58,11 +64,14 @@
                             <constraint firstItem="bj4-x7-oNz" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="60" id="abd-r2-1Ey"/>
                             <constraint firstItem="k1v-LB-HTt" firstAttribute="centerX" secondItem="bj4-x7-oNz" secondAttribute="centerX" id="iun-xb-DQd"/>
                             <constraint firstItem="k1v-LB-HTt" firstAttribute="top" secondItem="dBc-zg-sLW" secondAttribute="bottom" constant="180" id="jgP-fD-zlW"/>
+                            <constraint firstItem="rRc-hx-9zE" firstAttribute="top" secondItem="bj4-x7-oNz" secondAttribute="top" id="mUu-vA-SQd"/>
+                            <constraint firstItem="rRc-hx-9zE" firstAttribute="centerX" secondItem="bj4-x7-oNz" secondAttribute="centerX" id="tOY-aO-h5C"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="answerLabel" destination="k1v-LB-HTt" id="XXT-tw-nOS"/>
-                        <outlet property="questionLabel" destination="bj4-x7-oNz" id="iTz-aL-ygW"/>
+                        <outlet property="currentQuestionLabel" destination="bj4-x7-oNz" id="8ew-9D-mS2"/>
+                        <outlet property="nextQuestionLabel" destination="rRc-hx-9zE" id="80Q-T7-htA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

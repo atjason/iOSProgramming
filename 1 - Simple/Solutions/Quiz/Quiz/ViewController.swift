@@ -10,7 +10,8 @@ import UIKit
 
 class ViewController: UIViewController {
   
-  @IBOutlet weak var questionLabel: UILabel!
+  @IBOutlet weak var currentQuestionLabel: UILabel!
+  @IBOutlet weak var nextQuestionLabel: UILabel!
   @IBOutlet weak var answerLabel: UILabel!
   
   let questions = [
@@ -28,18 +29,39 @@ class ViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    questionLabel.text = questions[currentQuestionIndex]
+    currentQuestionLabel.text = questions[currentQuestionIndex]
+    
+    nextQuestionLabel.alpha = 0
   }
   
+  // MARK: - Action
+  
   @IBAction func showNextQuestion(_ sender: UIButton) {
-    currentQuestionIndex = (currentQuestionIndex + 1 ) % questions.count
+    let nextQuestionIndex = (currentQuestionIndex + 1 ) % questions.count
     
-    questionLabel.text = questions[currentQuestionIndex]
+    nextQuestionLabel.text = questions[nextQuestionIndex]
     answerLabel.text = "???"
+    
+    animateLabelTranstitions()
+    
+    currentQuestionIndex = nextQuestionIndex
   }
   
   @IBAction func showAnswer(_ sender: UIButton) {
     answerLabel.text = answers[currentQuestionIndex]
+  }
+  
+  // MARK: - Helper
+  
+  func animateLabelTranstitions() {
+    UIView.animate(withDuration: 0.5, animations: { 
+      self.currentQuestionLabel.alpha = 0
+      self.nextQuestionLabel.alpha = 1
+      
+    }) { (result) in
+      assert(result)
+      swap(&self.currentQuestionLabel, &self.nextQuestionLabel)
+    }
   }
 }
 

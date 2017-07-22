@@ -48,8 +48,8 @@ class ConversionViewController: UIViewController, UITextFieldDelegate {
   // MARK: - Action
   
   @IBAction func fahrenheitChanged(_ sender: UITextField) {
-    if let text = sender.text, let value = Double(text) {
-      fahrenheitValue = Measurement(value: value, unit: .fahrenheit)
+    if let text = sender.text, let number = numberFormater.number(from: text) {
+      fahrenheitValue = Measurement(value: number.doubleValue, unit: .fahrenheit)
     } else {
       fahrenheitValue = nil
     }
@@ -68,7 +68,7 @@ class ConversionViewController: UIViewController, UITextFieldDelegate {
     
     let alreadyHasDecimalSeperator = (textField.text?.contains(decimalSeperator) == true)
     let newStringHasDecimalSeperator = string.contains(decimalSeperator)
-        
+    
     if alreadyHasDecimalSeperator && newStringHasDecimalSeperator {
       return false
     } else {

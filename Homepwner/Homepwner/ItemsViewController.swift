@@ -24,13 +24,11 @@ class ItemsViewController: UITableViewController {
   // MARK: - Action
   
   @IBAction func toggleEditting(_ sender: UIButton) {
-    if isEditing {
-      setEditing(false, animated: true)
-      sender.setTitle("Edit", for: .normal)
-    } else {
-      setEditing(true, animated: true)
-      sender.setTitle("Done", for: .normal)
-    }
+    let newState = isEditing ? false : true
+    let title = newState ? "Done" : "Edit"
+    
+    setEditing(newState, animated: true)
+    sender.setTitle(title, for: .normal)
   }
   
   @IBAction func addItem(_ sender: UIButton) {

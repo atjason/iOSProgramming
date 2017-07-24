@@ -19,6 +19,9 @@ class ItemsViewController: UITableViewController {
     let insets = UIEdgeInsetsMake(statusBarFrame.height, 0, 0, 0)
     tableView.contentInset = insets
     tableView.scrollIndicatorInsets = insets
+    
+    tableView.rowHeight = UITableViewAutomaticDimension
+    tableView.estimatedRowHeight = 65
   }
   
   // MARK: - Action
@@ -46,11 +49,14 @@ class ItemsViewController: UITableViewController {
   }
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCell")!
+    let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell") as! ItemCell
     
     let item = itemStore.items[indexPath.row]
-    cell.textLabel?.text = item.name
-    cell.detailTextLabel?.text = "$\(item.price)"
+    
+    cell.nameLabel.text = item.name
+    cell.serialNumberLabel.text = item.serialNumber
+    cell.priceLabel?.text = "$\(item.price)"
+    
     return cell
   }
   

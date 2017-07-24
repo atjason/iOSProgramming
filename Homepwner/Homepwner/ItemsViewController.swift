@@ -59,4 +59,11 @@ class ItemsViewController: UITableViewController {
   override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
     itemStore.move(sourceIndex: sourceIndexPath.row, destinationIndex: destinationIndexPath.row)
   }
+  
+  override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    if editingStyle == .delete {
+      itemStore.items.remove(at: indexPath.row)
+      tableView.deleteRows(at: [indexPath], with: .automatic)
+    }
+  }
 }

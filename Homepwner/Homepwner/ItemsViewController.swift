@@ -34,7 +34,11 @@ class ItemsViewController: UITableViewController {
   }
   
   @IBAction func addItem(_ sender: UIButton) {
-    
+    let item = itemStore.createItem()
+    if let index = itemStore.items.index(of: item) {
+      let indexPath = IndexPath(row: index, section: 0)
+      tableView.insertRows(at: [indexPath], with: .automatic)
+    }
   }
   
   // MARK: - UITableViewDataSource

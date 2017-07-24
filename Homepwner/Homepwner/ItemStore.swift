@@ -26,4 +26,15 @@ class ItemStore {
     
     return item
   }
+  
+  func move(sourceIndex: Int, destinationIndex: Int) {
+    guard sourceIndex != destinationIndex
+      && sourceIndex >= 0 && sourceIndex < items.count
+      && destinationIndex >= 0 && destinationIndex < items.count else {
+      return
+    }
+    
+    let item = items.remove(at: sourceIndex)
+    items.insert(item, at: destinationIndex)
+  }
 }

@@ -57,6 +57,8 @@ class ItemsViewController: UITableViewController {
     cell.serialNumberLabel.text = item.serialNumber
     cell.priceLabel?.text = "$\(item.price)"
     
+    cell.priceLabel.textColor = (item.price >= 50) ? .green : .red
+    
     return cell
   }
   

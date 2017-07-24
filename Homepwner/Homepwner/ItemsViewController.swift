@@ -55,4 +55,8 @@ class ItemsViewController: UITableViewController {
     cell.detailTextLabel?.text = "$\(item.price)"
     return cell
   }
+  
+  override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+    itemStore.move(sourceIndex: sourceIndexPath.row, destinationIndex: destinationIndexPath.row)
+  }
 }

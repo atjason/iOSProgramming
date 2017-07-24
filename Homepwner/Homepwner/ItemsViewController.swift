@@ -9,18 +9,18 @@
 import UIKit
 
 class ItemsViewController: UITableViewController, UITableViewDataSource {
-  var dataStore: ItemStore!
+  var itemStore: ItemStore!
   
   // MARK: - UITableViewDataSource
   
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return dataStore.items.count
+    return itemStore.items.count
   }
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "")
     
-    let item = dataStore.items[indexPath.row]
+    let item = itemStore.items[indexPath.row]
     cell?.textLabel = item.name
     cell?.detailTextLabel = "$\(item.price)"
     return cell

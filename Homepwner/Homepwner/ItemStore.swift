@@ -18,4 +18,12 @@ class ItemStore {
       items.append(Item(random: true))
     }
   }
+  
+  @discardableResult func createItem() -> Item {
+    let item = Item(random: true)
+    
+    items.append(item)
+    
+    return item
+  }
 }

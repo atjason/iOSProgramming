@@ -21,6 +21,22 @@ class ItemsViewController: UITableViewController {
     tableView.scrollIndicatorInsets = insets
   }
   
+  // MARK: - Action
+  
+  @IBAction func toggleEditting(_ sender: UIButton) {
+    if isEditing {
+      setEditing(false, animated: true)
+      sender.setTitle("Edit", for: .normal)
+    } else {
+      setEditing(true, animated: true)
+      sender.setTitle("Done", for: .normal)
+    }
+  }
+  
+  @IBAction func addItem(_ sender: UIButton) {
+    
+  }
+  
   // MARK: - UITableViewDataSource
   
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

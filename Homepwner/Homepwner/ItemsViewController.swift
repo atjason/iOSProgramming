@@ -11,6 +11,16 @@ import UIKit
 class ItemsViewController: UITableViewController {
   var itemStore: ItemStore!
   
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    
+    let statusBarFrame = UIApplication.shared.statusBarFrame
+    
+    let insets = UIEdgeInsetsMake(statusBarFrame.height, 0, 0, 0)
+    tableView.contentInset = insets
+    tableView.scrollIndicatorInsets = insets
+  }
+  
   // MARK: - UITableViewDataSource
   
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ItemsViewController: UITableViewController, UITableViewDataSource {
+class ItemsViewController: UITableViewController {
   var itemStore: ItemStore!
   
   // MARK: - UITableViewDataSource
@@ -18,11 +18,11 @@ class ItemsViewController: UITableViewController, UITableViewDataSource {
   }
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: "")
+    let cell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCell")!
     
     let item = itemStore.items[indexPath.row]
-    cell?.textLabel = item.name
-    cell?.detailTextLabel = "$\(item.price)"
+    cell.textLabel?.text = item.name
+    cell.detailTextLabel?.text = "$\(item.price)"
     return cell
   }
 }

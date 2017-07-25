@@ -188,6 +188,12 @@
                             <constraint firstItem="hqq-e3-Gg2" firstAttribute="top" secondItem="nMd-Hy-7bC" secondAttribute="bottom" constant="8" id="hdT-cb-X5o"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="dateLabel" destination="zBM-F6-QaB" id="ROG-cn-1hf"/>
+                        <outlet property="nameField" destination="YuJ-Ee-QYL" id="mMA-BZ-nbu"/>
+                        <outlet property="priceField" destination="xpp-Vq-PMv" id="J0z-ax-BI5"/>
+                        <outlet property="serialField" destination="GYq-rX-ks1" id="HgB-mr-3Ng"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Ie-w8-gPZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

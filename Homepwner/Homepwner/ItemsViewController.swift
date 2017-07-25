@@ -34,7 +34,7 @@ class ItemsViewController: UITableViewController {
     sender.setTitle(title, for: .normal)
   }
   
-  @IBAction func addItem(_ sender: UIButton) {
+  @IBAction func addItem(_ sender: UIBarButtonItem) {
     let item = itemStore.createItem()
     if let index = itemStore.items.index(of: item) {
       let indexPath = IndexPath(row: index, section: 0)

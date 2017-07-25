@@ -20,25 +20,11 @@ class ItemsViewController: UITableViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    let statusBarFrame = UIApplication.shared.statusBarFrame
-    
-    let insets = UIEdgeInsetsMake(statusBarFrame.height, 0, 0, 0)
-    tableView.contentInset = insets
-    tableView.scrollIndicatorInsets = insets
-    
     tableView.rowHeight = UITableViewAutomaticDimension
     tableView.estimatedRowHeight = 65
   }
   
   // MARK: - Action
-  
-  @IBAction func toggleEditting(_ sender: UIButton) {
-    let newState = isEditing ? false : true
-    let title = newState ? "Done" : "Edit"
-    
-    setEditing(newState, animated: true)
-    sender.setTitle(title, for: .normal)
-  }
   
   @IBAction func addItem(_ sender: UIBarButtonItem) {
     let item = itemStore.createItem()

@@ -50,6 +50,8 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
   override func viewWillDisappear(_ animated: Bool) {
     super.viewWillDisappear(animated)
     
+    view.endEditing(false)
+    
     item.name = nameField.text ?? ""
     item.serialNumber = serialField.text
     if let text = priceField.text, let price = Int(text) {

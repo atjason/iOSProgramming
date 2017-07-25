@@ -46,4 +46,16 @@ class DetailViewController: UIViewController {
     priceField.text = priceFormater.string(from: NSNumber(value: item.price))
     dateLabel.text = dateFormater.string(from: item.date)
   }
+  
+  override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(animated)
+    
+    item.name = nameField.text ?? ""
+    item.serialNumber = serialField.text
+    if let text = priceField.text, let price = Int(text) {
+      item.price = price
+    } else {
+      item.price = 0
+    }
+  }
 }

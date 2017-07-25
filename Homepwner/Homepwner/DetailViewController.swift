@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DetailViewController: UIViewController {
+class DetailViewController: UIViewController, UITextFieldDelegate {
   
   @IBOutlet weak var nameField: UITextField!
   @IBOutlet weak var serialField: UITextField!
@@ -57,5 +57,12 @@ class DetailViewController: UIViewController {
     } else {
       item.price = 0
     }
+  }
+  
+  // MARK: - UITextFieldDelegate
+  
+  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    textField.resignFirstResponder()
+    return true
   }
 }

@@ -17,6 +17,7 @@
 		96634E071F258E7C00961D2E /* ItemStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96634E061F258E7C00961D2E /* ItemStore.swift */; };
 		96634E091F2590E500961D2E /* ItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96634E081F2590E500961D2E /* ItemsViewController.swift */; };
 		96634E0B1F25DB0E00961D2E /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96634E0A1F25DB0E00961D2E /* ItemCell.swift */; };
+		96634E0D1F26E54900961D2E /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96634E0C1F26E54900961D2E /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		96634E061F258E7C00961D2E /* ItemStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemStore.swift; sourceTree = "<group>"; };
 		96634E081F2590E500961D2E /* ItemsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemsViewController.swift; sourceTree = "<group>"; };
 		96634E0A1F25DB0E00961D2E /* ItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
+		96634E0C1F26E54900961D2E /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +110,7 @@
 				96634E061F258E7C00961D2E /* ItemStore.swift */,
 				96634E0A1F25DB0E00961D2E /* ItemCell.swift */,
 				96634E081F2590E500961D2E /* ItemsViewController.swift */,
+				96634E0C1F26E54900961D2E /* DetailViewController.swift */,
 				96634DDA1F258DE700961D2E /* Main.storyboard */,
 				96634DDD1F258DE700961D2E /* Assets.xcassets */,
 				96634DDF1F258DE700961D2E /* LaunchScreen.storyboard */,
@@ -274,6 +277,7 @@
 				96634E091F2590E500961D2E /* ItemsViewController.swift in Sources */,
 				96634E051F258E1100961D2E /* Item.swift in Sources */,
 				96634E071F258E7C00961D2E /* ItemStore.swift in Sources */,
+				96634E0D1F26E54900961D2E /* DetailViewController.swift in Sources */,
 				96634DD71F258DE700961D2E /* AppDelegate.swift in Sources */,
 				96634E0B1F25DB0E00961D2E /* ItemCell.swift in Sources */,
 			);

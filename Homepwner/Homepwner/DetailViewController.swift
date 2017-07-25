@@ -39,6 +39,8 @@ class DetailViewController: UIViewController {
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     
+    navigationItem.title = item.name
+    
     nameField.text = item.name
     serialField.text = item.serialNumber
     priceField.text = priceFormater.string(from: NSNumber(value: item.price))

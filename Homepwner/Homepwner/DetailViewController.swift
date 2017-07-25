@@ -61,6 +61,12 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
     }
   }
   
+  // MARK: - Action
+  
+  @IBAction func backgroundTapped(_ sender: UITapGestureRecognizer) {
+    view.endEditing(false)
+  }
+  
   // MARK: - UITextFieldDelegate
   
   func textFieldShouldReturn(_ textField: UITextField) -> Bool {

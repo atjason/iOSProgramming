@@ -17,6 +17,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UINavigationC
   @IBOutlet weak var imageView: UIImageView!
   
   var item: Item!
+  var imageStore: ImageStore!
   
   let priceFormater: NumberFormatter = {
     let formater = NumberFormatter()
@@ -46,6 +47,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UINavigationC
     serialField.text = item.serialNumber
     priceField.text = priceFormater.string(from: NSNumber(value: item.price))
     dateLabel.text = dateFormater.string(from: item.date)
+    imageView.image = imageStore[item.id]
   }
   
   override func viewWillDisappear(_ animated: Bool) {
@@ -86,6 +88,8 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UINavigationC
   
   func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
     if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+      imageStore[item.id] = image
+      
       imageView.image = image
     }
     

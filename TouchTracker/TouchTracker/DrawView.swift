@@ -87,10 +87,7 @@ class DrawView: UIView {
   }
   
   override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-    for touch in touches {
-      let value = NSValue(nonretainedObject: touch)
-      currentLines[value] = nil
-    }
+    currentLines.removeAll()
     
     setNeedsDisplay()
   }
@@ -100,6 +97,7 @@ class DrawView: UIView {
   func stoke(_ line: Line) {
     let path = UIBezierPath()
     path.lineWidth = lineThickness
+    path.lineCapStyle = .round
     
     path.move(to: line.start)
     path.addLine(to: line.end)

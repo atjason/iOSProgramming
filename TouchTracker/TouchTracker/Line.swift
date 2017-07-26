@@ -10,6 +10,6 @@ import Foundation
 import CoreGraphics
 
 struct Line {
-  var start = CGPoint()
-  var end = CGPoint()
+  var start = CGPoint.zero
+  var end = CGPoint.zero
 }

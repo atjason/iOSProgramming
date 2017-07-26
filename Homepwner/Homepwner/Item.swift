@@ -9,12 +9,14 @@
 import UIKit
 
 class Item: NSObject {
+  var id: String
   var name: String
   var price: Int
   var serialNumber: String?
   var date: Date
   
   init(name: String, price: Int, serialNumber: String? = nil) {
+    self.id = UUID().uuidString
     self.name = name
     self.price = price
     self.serialNumber = serialNumber

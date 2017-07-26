@@ -14,16 +14,35 @@ class ImageStore {
   
   subscript(key: String) -> UIImage? {
     get {
-      return cache.object(forKey: key as NSString)
+      if let image = cache.object(forKey: key as NSString) {
+        return image
+      }
+      
+      let url = imageURL(forKey: key)
+      return UIImage(contentsOfFile: url.path)
     }
     
     set {
       if let image = newValue {
         cache.setObject(image, forKey: key as NSString)
+        
+        if let data = UIImageJPEGRepresentation(image, 0.5) {
+          let url = imageURL(forKey: key)
+          let _ = try? data.write(to: url, options: .atomicWrite)
+        }
+        
       } else {
         cache.removeObject(forKey: key as NSString)
+        
+        let url = imageURL(forKey: key)
+        try? FileManager.default.removeItem(at: url)
       }
     }
+  }
+  
+  func imageURL(forKey key: String) -> URL {
+    let documents = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+    return documents.first!.appendingPathComponent(key)
   }
 }
 

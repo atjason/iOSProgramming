@@ -14,21 +14,34 @@ class DrawView: UIView {
   var currentLines = [NSValue: Line]()
   var finishedLines = [Line]()
   
-  @IBInspectable var currentLineColor = UIColor.red
-  @IBInspectable var finishedLineColor = UIColor.black
+  @IBInspectable var currentLineColor: UIColor = .red {
+    didSet {
+      setNeedsDisplay()
+    }
+  }
   
-  @IBInspectable var lineThickness: CGFloat = 10.0
+  @IBInspectable var finishedLineColor: UIColor = .black {
+    didSet {
+      setNeedsDisplay()
+    }
+  }
+  
+  @IBInspectable var lineThickness: CGFloat = 10.0 {
+    didSet {
+      setNeedsDisplay()
+    }
+  }
   
   // MARK: - Draw
   
-  override func draw(_ rect: CGRect) {
-    currentLineColor.setStroke()
-    for (_, line) in currentLines {
+  override func draw(_ rect: CGRect) {    
+    finishedLineColor.setStroke()
+    for line in finishedLines {
       stoke(line)
     }
     
-    finishedLineColor.setStroke()
-    for line in finishedLines {
+    currentLineColor.setStroke()
+    for (_, line) in currentLines {
       stoke(line)
     }
   }

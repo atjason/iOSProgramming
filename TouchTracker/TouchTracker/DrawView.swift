@@ -13,7 +13,14 @@ class DrawView: UIView {
   
   var currentLines = [NSValue: Line]()
   var finishedLines = [Line]()
-  var selectedLineIndex: Int?
+  var selectedLineIndex: Int? {
+    didSet {
+      if selectedLineIndex == nil {
+        let menu = UIMenuController.shared
+        menu.setMenuVisible(false, animated: true)
+      }
+    }
+  }
   
   required init?(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
@@ -51,6 +58,10 @@ class DrawView: UIView {
     }
   }
   
+  override var canBecomeFirstResponder: Bool {
+    return true
+  }
+  
   // MARK: - Draw
   
   override func draw(_ rect: CGRect) {    
@@ -76,6 +87,22 @@ class DrawView: UIView {
   func tap(_ sender: UIGestureRecognizer) {
     let point = sender.location(in: self)
     selectedLineIndex = lineIndex(of: point)
+    
+    let menu = UIMenuController.shared
+    if let _ = selectedLineIndex {
+      becomeFirstResponder()
+      
+      let deleteItem = UIMenuItem(title: "Delete", action: #selector(DrawView.deleteLine(_:)))
+      menu.menuItems = [deleteItem]
+      
+      let rect = CGRect(x: point.x, y: point.y, width: 2, height: 2)
+      menu.setTargetRect(rect, in: self)
+      
+      menu.setMenuVisible(true, animated: true)
+      
+    } else {
+      menu.setMenuVisible(false, animated: true)
+    }
     
     setNeedsDisplay()
   }
@@ -143,6 +170,15 @@ class DrawView: UIView {
     path.addLine(to: line.end)
     
     path.stroke()
+  }
+  
+  func deleteLine(_ sender: UIMenuController) {
+    if let index = selectedLineIndex {
+      finishedLines.remove(at: index)
+      selectedLineIndex = nil
+      
+      setNeedsDisplay()
+    }
   }
   
   func lineIndex(of point: CGPoint) -> Int? {

@@ -12,10 +12,10 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
+  
+  let itemStore = ItemStore()
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-    
-    let itemStore = ItemStore()
     let imageStore = ImageStore()
     
     if let navigationController = window?.rootViewController as? UINavigationController,
@@ -25,6 +25,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     return true
+  }
+  
+  func applicationDidEnterBackground(_ application: UIApplication) {
+    let result = itemStore.save()
+    assert(result)
   }
 }
 

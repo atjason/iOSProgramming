@@ -9,7 +9,7 @@
 import UIKit
 import CoreGraphics
 
-class DrawView: UIView {
+class DrawView: UIView, UIGestureRecognizerDelegate {
   
   var currentLines = [NSValue: Line]()
   var finishedLines = [Line]()
@@ -20,26 +20,6 @@ class DrawView: UIView {
         menu.setMenuVisible(false, animated: true)
       }
     }
-  }
-  
-  required init?(coder aDecoder: NSCoder) {
-    super.init(coder: aDecoder)
-    
-    let doubleTapGesture = UITapGestureRecognizer()
-    doubleTapGesture.numberOfTapsRequired = 2
-    doubleTapGesture.delaysTouchesBegan = true
-    doubleTapGesture.addTarget(self, action: #selector(doubleTap(_:)))
-    self.addGestureRecognizer(doubleTapGesture)
-    
-    let tapGesture = UITapGestureRecognizer()
-    tapGesture.require(toFail: doubleTapGesture)
-    tapGesture.delaysTouchesBegan = true
-    tapGesture.addTarget(self, action: #selector(tap(_:)))
-    self.addGestureRecognizer(tapGesture)
-    
-    let longPressGesture = UILongPressGestureRecognizer()
-    longPressGesture.addTarget(self, action: #selector(longPressed(_:)))
-    self.addGestureRecognizer(longPressGesture)
   }
   
   let selectedLineColor: UIColor = .green
@@ -60,6 +40,34 @@ class DrawView: UIView {
     didSet {
       setNeedsDisplay()
     }
+  }
+  
+  var panGesture: UIPanGestureRecognizer!
+  
+  required init?(coder aDecoder: NSCoder) {
+    super.init(coder: aDecoder)
+    
+    let doubleTapGesture = UITapGestureRecognizer()
+    doubleTapGesture.numberOfTapsRequired = 2
+    doubleTapGesture.delaysTouchesBegan = true
+    doubleTapGesture.addTarget(self, action: #selector(doubleTap(_:)))
+    self.addGestureRecognizer(doubleTapGesture)
+    
+    let tapGesture = UITapGestureRecognizer()
+    tapGesture.require(toFail: doubleTapGesture)
+    tapGesture.delaysTouchesBegan = true
+    tapGesture.addTarget(self, action: #selector(tap(_:)))
+    self.addGestureRecognizer(tapGesture)
+    
+    let longPressGesture = UILongPressGestureRecognizer()
+    longPressGesture.addTarget(self, action: #selector(longPressed(_:)))
+    self.addGestureRecognizer(longPressGesture)
+    
+    let panGesture = UIPanGestureRecognizer()
+    panGesture.addTarget(self, action: #selector(dragged(_:)))
+    panGesture.cancelsTouchesInView = false
+    panGesture.delegate = self
+    self.addGestureRecognizer(panGesture)
   }
   
   override var canBecomeFirstResponder: Bool {
@@ -120,12 +128,15 @@ class DrawView: UIView {
   }
   
   func longPressed(_ sender: UIGestureRecognizer) {
-    let point = sender.location(in: self)
-    let possibleLineIndex = lineIndex(of: point)
-    if possibleLineIndex != nil {
-      selectedLineIndex = possibleLineIndex
-      currentLines.removeAll()
-    } else {
+    if sender.state == .began {
+      let point = sender.location(in: self)
+      selectedLineIndex = lineIndex(of: point)
+      
+      if selectedLineIndex != nil {
+        currentLines.removeAll()
+      }
+      
+    } else if sender.state == .ended {
       selectedLineIndex = nil
     }
     
@@ -133,7 +144,18 @@ class DrawView: UIView {
   }
   
   func dragged(_ sender: UIPanGestureRecognizer) {
-    
+    if let index = selectedLineIndex, sender.state == .changed {
+      let translation = sender.translation(in: self)
+      
+      finishedLines[index].start.x += translation.x
+      finishedLines[index].start.y += translation.y
+      finishedLines[index].end.x += translation.x
+      finishedLines[index].end.y += translation.y
+      
+      sender.setTranslation(CGPoint.zero, in: self)
+      
+      setNeedsDisplay()
+    }
   }
   
   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -178,6 +200,12 @@ class DrawView: UIView {
     currentLines.removeAll()
     
     setNeedsDisplay()
+  }
+  
+  // MARK: - UIGestureRecognizerDelegate
+  
+  func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+    return true
   }
   
   // MARK: - Helper

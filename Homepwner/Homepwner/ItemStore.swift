@@ -11,9 +11,9 @@ import Foundation
 class ItemStore {
   var items: [Item]
   let archivePath: String = {
-    let document = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+    let documents = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
     let filename = "item.archive"
-    return document.first!.appendingPathComponent(filename).path
+    return documents.first!.appendingPathComponent(filename).path
   }()
   
   init() {

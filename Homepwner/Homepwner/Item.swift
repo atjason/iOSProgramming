@@ -65,6 +65,8 @@ class Item: NSObject, NSCoding {
     price = aDecoder.decodeInteger(forKey: Item.pricekey)
     serialNumber = aDecoder.decodeObject(forKey: Item.serialNumberkey) as? String
     date = (aDecoder.decodeObject(forKey: Item.datekey) as? Date) ?? Date()
+    
+    super.init()
   }
   
   func encode(with aCoder: NSCoder) {

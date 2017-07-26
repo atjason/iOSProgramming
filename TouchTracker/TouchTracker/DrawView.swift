@@ -20,6 +20,7 @@ class DrawView: UIView {
     
     let doubleTapGesture = UITapGestureRecognizer()
     doubleTapGesture.numberOfTapsRequired = 2
+    doubleTapGesture.delaysTouchesBegan = true
     doubleTapGesture.addTarget(self, action: #selector(doubleTap(_:)))
     self.addGestureRecognizer(doubleTapGesture)
     
@@ -153,8 +154,7 @@ class DrawView: UIView {
         let x = start.x + (end.x - start.x) * t
         let y = start.y + (end.y - start.y) * t
         
-        let distance = ((x - point.x) * (x - point.x) + (y - point.y) * (y - point.y))
-        if distance < 400 {
+        if hypot(x - point.x, y - point.y) < 20.0 {
           return index
         }
       }

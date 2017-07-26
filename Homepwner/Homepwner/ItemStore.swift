@@ -10,12 +10,17 @@ import Foundation
 
 class ItemStore {
   var items: [Item]
+  let archivePath: String = {
+    let document = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+    let filename = "item.archive"
+    return document.first!.appendingPathComponent(filename).path
+  }()
   
   init() {
-    items = [Item]()
-    
-    for _ in 0..<5 {
-      items.append(Item(random: true))
+    if let items = NSKeyedUnarchiver.unarchiveObject(withFile: archivePath) as? [Item] {
+      self.items = items
+    } else {
+      items = [Item]()
     }
   }
   
@@ -25,6 +30,12 @@ class ItemStore {
     items.append(item)
     
     return item
+  }
+  
+  // MARK: - Public Method
+  
+  func save() -> Bool {
+    return NSKeyedArchiver.archiveRootObject(items, toFile: archivePath)
   }
   
   func move(sourceIndex: Int, destinationIndex: Int) {

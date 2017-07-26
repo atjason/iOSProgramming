@@ -14,6 +14,21 @@ class DrawView: UIView {
   var currentLines = [NSValue: Line]()
   var finishedLines = [Line]()
   
+  required init?(coder aDecoder: NSCoder) {
+    super.init(coder: aDecoder)
+    
+    let doubleTapGesture = UITapGestureRecognizer()
+    doubleTapGesture.numberOfTapsRequired = 2
+    doubleTapGesture.addTarget(self, action: #selector(doubleTap(_:)))
+    self.addGestureRecognizer(doubleTapGesture)
+    
+    let tapGesture = UITapGestureRecognizer()
+    tapGesture.require(toFail: doubleTapGesture)
+    tapGesture.delaysTouchesBegan = true
+    tapGesture.addTarget(self, action: #selector(tap(_:)))
+    self.addGestureRecognizer(tapGesture)
+  }
+  
   @IBInspectable var currentLineColor: UIColor = .red {
     didSet {
       setNeedsDisplay()
@@ -47,6 +62,17 @@ class DrawView: UIView {
   }
   
   // MARK: - Touch Event
+  
+  func tap(_ sender: UIGestureRecognizer) {
+    
+  }
+  
+  func doubleTap(_ sender: UIGestureRecognizer) {
+    currentLines.removeAll()
+    finishedLines.removeAll()
+    
+    setNeedsDisplay()
+  }
   
   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
     for touch in touches {

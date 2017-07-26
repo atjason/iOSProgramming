@@ -8,12 +8,20 @@
 
 import UIKit
 
-class Item: NSObject {
+class Item: NSObject, NSCoding {
+  private static let idkey = "id"
+  private static let namekey = "name"
+  private static let pricekey = "price"
+  private static let serialNumberkey = "serialNumber"
+  private static let datekey = "date"
+  
   var id: String
   var name: String
   var price: Int
   var serialNumber: String?
   var date: Date
+  
+  // MARK: - Life cycle
   
   init(name: String, price: Int, serialNumber: String? = nil) {
     self.id = UUID().uuidString
@@ -47,6 +55,24 @@ class Item: NSObject {
     let serialNumber = UUID().uuidString.components(separatedBy: "-").first!
     
     self.init(name: name, price: price, serialNumber: serialNumber)
+  }
+  
+  // MARK: - NSCoding
+  
+  required init?(coder aDecoder: NSCoder) {
+    id = (aDecoder.decodeObject(forKey: Item.idkey) as? String) ?? ""
+    name = (aDecoder.decodeObject(forKey: Item.namekey) as? String) ?? ""
+    price = aDecoder.decodeInteger(forKey: Item.pricekey)
+    serialNumber = aDecoder.decodeObject(forKey: Item.serialNumberkey) as? String
+    date = (aDecoder.decodeObject(forKey: Item.datekey) as? Date) ?? Date()
+  }
+  
+  func encode(with aCoder: NSCoder) {
+    aCoder.encode(id, forKey: Item.idkey)
+    aCoder.encode(name, forKey: Item.namekey)
+    aCoder.encode(price, forKey: Item.pricekey)
+    aCoder.encode(serialNumber, forKey: Item.serialNumberkey)
+    aCoder.encode(date, forKey: Item.datekey)
   }
   
   static func randomInt(upper: Int) -> Int {

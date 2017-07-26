@@ -9,7 +9,9 @@
 import UIKit
 
 class ItemsViewController: UITableViewController {
+  
   var itemStore: ItemStore!
+  var imageStore: ImageStore!
   
   required init?(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
@@ -46,6 +48,7 @@ class ItemsViewController: UITableViewController {
       if let row = tableView.indexPathForSelectedRow?.row,
         let detailViewController = segue.destination as? DetailViewController {
         detailViewController.item = itemStore.items[row]
+        detailViewController.imageStore = imageStore
       }
       
     default:
@@ -90,6 +93,8 @@ class ItemsViewController: UITableViewController {
       let deleteAction = UIAlertAction(title: "Delete", style: .destructive, handler: { (action) in
         self.itemStore.items.remove(at: indexPath.row)
         self.tableView.deleteRows(at: [indexPath], with: .automatic)
+        
+        self.imageStore[item.id] = nil
       })
       alert.addAction(deleteAction)
       

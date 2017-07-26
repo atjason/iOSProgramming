@@ -64,6 +64,10 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
   
   // MARK: - Action
   
+  @IBAction func takePhoto(_ sender: UIBarButtonItem) {
+    
+  }
+  
   @IBAction func backgroundTapped(_ sender: UITapGestureRecognizer) {
     view.endEditing(false)
   }

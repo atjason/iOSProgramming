@@ -19,7 +19,12 @@ class ImageStore {
       }
       
       let url = imageURL(forKey: key)
-      return UIImage(contentsOfFile: url.path)
+      if let image = UIImage(contentsOfFile: url.path) {
+        cache.setObject(image, forKey: key as NSString)
+        return image
+      }
+      
+      return nil
     }
     
     set {

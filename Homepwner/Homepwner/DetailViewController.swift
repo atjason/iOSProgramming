@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DetailViewController: UIViewController, UITextFieldDelegate {
+class DetailViewController: UIViewController, UITextFieldDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
   
   @IBOutlet weak var nameField: UITextField!
   @IBOutlet weak var serialField: UITextField!
@@ -65,11 +65,35 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
   // MARK: - Action
   
   @IBAction func takePhoto(_ sender: UIBarButtonItem) {
+    let imagePicker = UIImagePickerController()
     
+    imagePicker.delegate = self
+    
+    if UIImagePickerController.isSourceTypeAvailable(.camera) {
+      imagePicker.sourceType = .camera
+    } else {
+      imagePicker.sourceType = .savedPhotosAlbum
+    }
+    
+    present(imagePicker, animated: true, completion: nil)
   }
   
   @IBAction func backgroundTapped(_ sender: UITapGestureRecognizer) {
     view.endEditing(false)
+  }
+  
+  // MARK: - UIImagePickerControllerDelegate
+  
+  func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+    if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+      imageView.image = image
+    }
+    
+    picker.dismiss(animated: true, completion: nil)
+  }
+  
+  func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+    picker.dismiss(animated: true, completion: nil)
   }
   
   // MARK: - UITextFieldDelegate

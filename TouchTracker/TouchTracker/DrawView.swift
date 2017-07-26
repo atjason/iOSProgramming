@@ -36,6 +36,10 @@ class DrawView: UIView {
     tapGesture.delaysTouchesBegan = true
     tapGesture.addTarget(self, action: #selector(tap(_:)))
     self.addGestureRecognizer(tapGesture)
+    
+    let longPressGesture = UILongPressGestureRecognizer()
+    longPressGesture.addTarget(self, action: #selector(longPressed(_:)))
+    self.addGestureRecognizer(longPressGesture)
   }
   
   let selectedLineColor: UIColor = .green
@@ -113,6 +117,23 @@ class DrawView: UIView {
     selectedLineIndex = nil
     
     setNeedsDisplay()
+  }
+  
+  func longPressed(_ sender: UIGestureRecognizer) {
+    let point = sender.location(in: self)
+    let possibleLineIndex = lineIndex(of: point)
+    if possibleLineIndex != nil {
+      selectedLineIndex = possibleLineIndex
+      currentLines.removeAll()
+    } else {
+      selectedLineIndex = nil
+    }
+    
+    setNeedsDisplay()
+  }
+  
+  func dragged(_ sender: UIPanGestureRecognizer) {
+    
   }
   
   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

@@ -14,6 +14,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
   @IBOutlet weak var serialField: UITextField!
   @IBOutlet weak var priceField: UITextField!
   @IBOutlet weak var dateLabel: UILabel!
+  @IBOutlet weak var imageView: UIImageView!
   
   var item: Item!
   

@@ -156,11 +156,14 @@
                                         </subviews>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zBM-F6-QaB">
-                                        <rect key="frame" x="0.0" y="114" width="343" height="473"/>
+                                        <rect key="frame" x="0.0" y="114" width="343" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="248" translatesAutoresizingMaskIntoConstraints="NO" id="Rwe-7u-MTu">
+                                        <rect key="frame" x="0.0" y="142.5" width="343" height="444.5"/>
+                                    </imageView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="ceW-8n-lFL" firstAttribute="width" secondItem="5r6-dv-n43" secondAttribute="width" id="WyE-KC-PiC"/>
@@ -182,6 +185,7 @@
                     </view>
                     <connections>
                         <outlet property="dateLabel" destination="zBM-F6-QaB" id="ROG-cn-1hf"/>
+                        <outlet property="imageView" destination="Rwe-7u-MTu" id="oG1-vF-4Y1"/>
                         <outlet property="nameField" destination="YuJ-Ee-QYL" id="mMA-BZ-nbu"/>
                         <outlet property="priceField" destination="xpp-Vq-PMv" id="J0z-ax-BI5"/>
                         <outlet property="serialField" destination="GYq-rX-ks1" id="HgB-mr-3Ng"/>

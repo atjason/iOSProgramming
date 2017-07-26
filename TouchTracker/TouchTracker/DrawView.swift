@@ -13,6 +13,7 @@ class DrawView: UIView {
   
   var currentLines = [NSValue: Line]()
   var finishedLines = [Line]()
+  var selectedLineIndex: Int?
   
   required init?(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
@@ -28,6 +29,8 @@ class DrawView: UIView {
     tapGesture.addTarget(self, action: #selector(tap(_:)))
     self.addGestureRecognizer(tapGesture)
   }
+  
+  let selectedLineColor: UIColor = .green
   
   @IBInspectable var currentLineColor: UIColor = .red {
     didSet {
@@ -59,17 +62,27 @@ class DrawView: UIView {
     for (_, line) in currentLines {
       stoke(line)
     }
+    
+    selectedLineColor.setStroke()
+    if let index = selectedLineIndex {
+      let line = finishedLines[index]
+      stoke(line)
+    }
   }
   
   // MARK: - Touch Event
   
   func tap(_ sender: UIGestureRecognizer) {
+    let point = sender.location(in: self)
+    selectedLineIndex = lineIndex(of: point)
     
+    setNeedsDisplay()
   }
   
   func doubleTap(_ sender: UIGestureRecognizer) {
     currentLines.removeAll()
     finishedLines.removeAll()
+    selectedLineIndex = nil
     
     setNeedsDisplay()
   }
@@ -129,5 +142,24 @@ class DrawView: UIView {
     path.addLine(to: line.end)
     
     path.stroke()
+  }
+  
+  func lineIndex(of point: CGPoint) -> Int? {
+    for (index, line) in finishedLines.enumerated() {
+      let start = line.start
+      let end = line.end
+      
+      for t in stride(from: CGFloat(0), to: 1.0, by: 0.05) {
+        let x = start.x + (end.x - start.x) * t
+        let y = start.y + (end.y - start.y) * t
+        
+        let distance = ((x - point.x) * (x - point.x) + (y - point.y) * (y - point.y))
+        if distance < 400 {
+          return index
+        }
+      }
+    }
+    
+    return nil
   }
 }

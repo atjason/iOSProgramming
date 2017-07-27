@@ -13,11 +13,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
   var photoStore = PhotoStore()
+  var photoDataSource = PhotoDataSource()
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     
     if let photosViewController = window?.rootViewController as? PhotosViewController {
-      photosViewController.photoStore = photoStore
+      photosViewController.photoDataSource = photoDataSource
+      
+      // TODO Reload photo in data source.
     }
     
     return true

@@ -8,42 +8,44 @@
 
 import UIKit
 
-class PhotosViewController: UIViewController {
+class PhotosViewController: UICollectionViewController {
   
-  @IBOutlet var imageView: UIImageView!
+//  var photoStore: PhotoStore!
   
-  var photoStore: PhotoStore!
+  var photoDataSource: PhotoDataSource!
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    photoStore.fetchInterestingPhotos { (photosResult) in
-      switch photosResult {
-      case let .success(photos):
-        print("Get \(photos.count) photos.")
-        
-        if let photo = photos.first {
-          self.fetchAndDisplay(photo: photo)
-        }
-        
-      case let .failure(error):
-        print("Get error: \(error.localizedDescription)")
-      }
-    }
+    collectionView?.dataSource = photoDataSource
+    
+//    photoStore.fetchInterestingPhotos { (photosResult) in
+//      switch photosResult {
+//      case let .success(photos):
+//        print("Get \(photos.count) photos.")
+//        
+//        if let photo = photos.first {
+//          self.fetchAndDisplay(photo: photo)
+//        }
+//        
+//      case let .failure(error):
+//        print("Get error: \(error.localizedDescription)")
+//      }
+//    }
   }
   
   // MARK: - Helper
   
-  func fetchAndDisplay(photo: Photo) {
-    photoStore.fetchPhoto(photo, handler: { (photoResult) in
-      switch photoResult {
-      case let .success(image):
-        OperationQueue.main.addOperation {
-          self.imageView.image = image
-        }
-      case let .failure(error):
-        print(error)
-      }
-    })
-  }
+//  func fetchAndDisplay(photo: Photo) {
+//    photoStore.fetchPhoto(photo, handler: { (photoResult) in
+//      switch photoResult {
+//      case let .success(image):
+//        OperationQueue.main.addOperation {
+//          self.imageView.image = image
+//        }
+//      case let .failure(error):
+//        print(error)
+//      }
+//    })
+//  }
 }

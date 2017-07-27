@@ -17,6 +17,13 @@ class PhotosViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    photoStore.fetchInterestingPhotos()
+    photoStore.fetchInterestingPhotos { (photoResult) in
+      switch photoResult {
+      case let .success(photos):
+        print("Get \(photos.count) photos.")
+      case let .failure(error):
+        print("Get error: \(error.localizedDescription)")
+      }
+    }
   }
 }

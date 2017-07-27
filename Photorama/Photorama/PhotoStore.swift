@@ -8,6 +8,11 @@
 
 import Foundation
 
+enum PhotoResult {
+  case success([Photo])
+  case failure(Error)
+}
+
 class PhotoStore {
   
   private let session: URLSession = {
@@ -15,7 +20,7 @@ class PhotoStore {
     return URLSession(configuration: config)
   }()
   
-  func fetchInterestingPhotos() {
+  func fetchInterestingPhotos(hander: @escaping (PhotoResult) -> Void) {
     let url = FlickrAPI.interestingURLString
     let task = session.dataTask(with: url) { (data, response, error) in
       if let jsonData = data {

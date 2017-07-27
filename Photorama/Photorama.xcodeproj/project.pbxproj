@@ -17,6 +17,7 @@
 		96F285491F2985DC002135E1 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F285481F2985DC002135E1 /* Photo.swift */; };
 		96F2854B1F29E136002135E1 /* PhotoDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F2854A1F29E136002135E1 /* PhotoDataSource.swift */; };
 		96F2854D1F29E1FB002135E1 /* PhotoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F2854C1F29E1FB002135E1 /* PhotoViewCell.swift */; };
+		96F285511F2A10FE002135E1 /* ImageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F285501F2A10FE002135E1 /* ImageStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		96F285481F2985DC002135E1 /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		96F2854A1F29E136002135E1 /* PhotoDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoDataSource.swift; sourceTree = "<group>"; };
 		96F2854C1F29E1FB002135E1 /* PhotoViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewCell.swift; sourceTree = "<group>"; };
+		96F285501F2A10FE002135E1 /* ImageStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 				96F285301F29675F002135E1 /* AppDelegate.swift */,
 				96F285441F29684A002135E1 /* FlickrAPI.swift */,
 				96F285481F2985DC002135E1 /* Photo.swift */,
+				96F285501F2A10FE002135E1 /* ImageStore.swift */,
 				96F285461F296AFE002135E1 /* PhotoStore.swift */,
 				96F2854A1F29E136002135E1 /* PhotoDataSource.swift */,
 				96F2854C1F29E1FB002135E1 /* PhotoViewCell.swift */,
@@ -155,6 +158,7 @@
 				96F285451F29684A002135E1 /* FlickrAPI.swift in Sources */,
 				96F2854D1F29E1FB002135E1 /* PhotoViewCell.swift in Sources */,
 				96F285431F2967A7002135E1 /* PhotosViewController.swift in Sources */,
+				96F285511F2A10FE002135E1 /* ImageStore.swift in Sources */,
 				96F285471F296AFE002135E1 /* PhotoStore.swift in Sources */,
 				96F2854B1F29E136002135E1 /* PhotoDataSource.swift in Sources */,
 				96F285311F29675F002135E1 /* AppDelegate.swift in Sources */,

@@ -33,15 +33,16 @@ class PhotosViewController: UICollectionViewController {
   // MARK: - UICollectionViewDelegate
   
   override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-    guard let photoViewCell = cell as? PhotoViewCell else {
-      assert(false)
-    }
-    
     let photo = photoDataSource.photos[indexPath.row]
     photoStore.fetchPhoto(photo) { (photoResult) in
-      if case let .success(image) = photoResult {
+      if case let .success(image) = photoResult,
+        let photoIndex = self.photoDataSource.photos.index(of: photo) {
+        
         OperationQueue.main.addOperation {
-          photoViewCell.update(with: image)
+          let indexPath = IndexPath(row: photoIndex, section: 0)
+          if let photoViewCell = self.collectionView?.cellForItem(at: indexPath)as? PhotoViewCell {
+            photoViewCell.update(with: image)
+          }
         }
       }
     }

@@ -28,3 +28,9 @@ class Photo {
     self.secret = secret
   }
 }
+
+extension Photo: Equatable {
+  static func ==(left: Photo, right: Photo) -> Bool {
+    return (left.id == right.id)
+  }
+}

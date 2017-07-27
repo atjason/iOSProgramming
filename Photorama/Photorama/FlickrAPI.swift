@@ -55,12 +55,12 @@ struct FlickrAPI {
     return components.url!
   }
   
-  static func photos(ofJSON jsonData: Data) -> PhotoResult {
+  static func photos(ofJSON jsonData: Data) -> PhotosResult {
     
     guard let json = try? JSONSerialization.jsonObject(with: jsonData, options: []) as? [String: Any],
       let photosJSON = json?["photos"] as? [String: Any],
       let photoDataList = photosJSON["photo"] as? [[String: Any]] else {
-        return PhotoResult.failure(FlickrError.invalidJSON)
+        return PhotosResult.failure(FlickrError.invalidJSON)
     }
     
     var photos = [Photo]()
@@ -71,10 +71,10 @@ struct FlickrAPI {
     }
     
     if !photoDataList.isEmpty && photos.isEmpty {
-      return PhotoResult.failure(FlickrError.invalidJSON)
+      return PhotosResult.failure(FlickrError.invalidJSON)
     }
     
-    return PhotoResult.success(photos)
+    return PhotosResult.success(photos)
   }
   
   private static func photo(ofJSON json: [String: Any]) -> Photo? {

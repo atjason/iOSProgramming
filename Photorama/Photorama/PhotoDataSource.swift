@@ -18,12 +18,8 @@ class PhotoDataSource: NSObject, UICollectionViewDataSource {
   
   func loadPhotos(handler: @escaping () -> Void) {
     photoStore.fetchInterestingPhotos { (photosResult) in
-      switch photosResult {
-      case let .success(photos):
+      if case let .success(photos) = photosResult {
         self.photos = photos
-
-      default:
-        break
       }
       
       handler()

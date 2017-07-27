@@ -39,15 +39,10 @@ class PhotosViewController: UICollectionViewController {
     
     let photo = photoDataSource.photos[indexPath.row]
     photoStore.fetchPhoto(photo) { (photoResult) in
-      // TODO Use if let
-      switch photoResult {
-      case let .success(image):
+      if case let .success(image) = photoResult {
         OperationQueue.main.addOperation {
           photoViewCell.update(with: image)
         }
-        
-      default:
-        break
       }
     }
   }

@@ -12,6 +12,11 @@ enum Method: String {
   case interestingPhotos = "flickr.interestingness.getList"
 }
 
+enum FlickrError: Error {
+  case invalidJSON
+  case unknown
+}
+
 struct FlickrAPI {
   private static let baseURLString = "https://api.flickr.com/services/rest"
   private static let apiKey = "a6d819499131071f158fd740860a5a88"
@@ -48,5 +53,35 @@ struct FlickrAPI {
     components.queryItems = queryItems
     
     return components.url!
+  }
+  
+  static func photos(ofJSON jsonData: Data) -> PhotoResult {
+    
+    guard let json = try? JSONSerialization.jsonObject(with: jsonData, options: []) as? [String: Any],
+      let photosJSON = json?["photos"] as? [String: Any],
+      let photoDataList = photosJSON["photo"] as? [[String: Any]] else {
+        return PhotoResult.failure(FlickrError.invalidJSON)
+    }
+    
+    var photos = [Photo]()
+    for photoData in photoDataList {
+      if let photo = photo(ofJSON: photoData) {
+        photos.append(photo)
+      }
+    }
+    
+    if !photoDataList.isEmpty && photos.isEmpty {
+      return PhotoResult.failure(FlickrError.invalidJSON)
+    }
+    
+    return PhotoResult.success(photos)
+  }
+  
+  private static func photo(ofJSON json: [String: Any]) -> Photo? {
+    guard let id = json["id"] as? String, let title = json["title"] as? String else {
+      return nil
+    }
+    
+    return Photo(id: id, title: title)
   }
 }

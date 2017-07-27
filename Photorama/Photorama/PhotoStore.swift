@@ -20,16 +20,17 @@ class PhotoStore {
     return URLSession(configuration: config)
   }()
   
-  func fetchInterestingPhotos(hander: @escaping (PhotoResult) -> Void) {
+  func fetchInterestingPhotos(handler: @escaping (PhotoResult) -> Void) {
     let url = FlickrAPI.interestingURLString
     let task = session.dataTask(with: url) { (data, response, error) in
       if let jsonData = data {
-        let str = String(data: jsonData, encoding: .utf8)
-        print(str)
+        let photoResult = FlickrAPI.photos(ofJSON: jsonData)
+        handler(photoResult)
+        
       } else if let error = error {
-        print(error)
+        handler(PhotoResult.failure(error))
       } else {
-        assert(false, "Unexpected error.")
+        handler(PhotoResult.failure(FlickrError.unknown))
       }
     }
     task.resume()

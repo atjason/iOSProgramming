@@ -78,10 +78,14 @@ struct FlickrAPI {
   }
   
   private static func photo(ofJSON json: [String: Any]) -> Photo? {
-    guard let id = json["id"] as? String, let title = json["title"] as? String else {
+    guard let id = json["id"] as? String,
+      let title = json["title"] as? String,
+      let farm = json["farm"] as? Int,
+      let server = json["server"] as? String,
+      let secret = json["secret"] as? String else {
       return nil
     }
     
-    return Photo(id: id, title: title)
+    return Photo(id: id, title: title, farm: farm, server: server, secret: secret)
   }
 }

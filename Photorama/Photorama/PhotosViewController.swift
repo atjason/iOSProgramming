@@ -10,42 +10,48 @@ import UIKit
 
 class PhotosViewController: UICollectionViewController {
   
-//  var photoStore: PhotoStore!
+  var photoStore: PhotoStore!
   
-  var photoDataSource: PhotoDataSource!
+  var photoDataSource: PhotoDataSource! {
+    didSet {
+      collectionView?.dataSource = photoDataSource
+      
+      photoDataSource.loadPhotos {
+        OperationQueue.main.addOperation {
+          self.collectionView?.reloadData()
+        }
+      }
+    }
+  }
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    collectionView?.dataSource = photoDataSource
+    collectionView?.delegate = self
+  }
+  
+  // MARK: - UICollectionViewDelegate
+  
+  override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+    guard let photoViewCell = cell as? PhotoViewCell else {
+      assert(false)
+    }
     
-//    photoStore.fetchInterestingPhotos { (photosResult) in
-//      switch photosResult {
-//      case let .success(photos):
-//        print("Get \(photos.count) photos.")
-//        
-//        if let photo = photos.first {
-//          self.fetchAndDisplay(photo: photo)
-//        }
-//        
-//      case let .failure(error):
-//        print("Get error: \(error.localizedDescription)")
-//      }
-//    }
+    let photo = photoDataSource.photos[indexPath.row]
+    photoStore.fetchPhoto(photo) { (photoResult) in
+      // TODO Use if let
+      switch photoResult {
+      case let .success(image):
+        OperationQueue.main.addOperation {
+          photoViewCell.update(with: image)
+        }
+        
+      default:
+        break
+      }
+    }
   }
   
   // MARK: - Helper
   
-//  func fetchAndDisplay(photo: Photo) {
-//    photoStore.fetchPhoto(photo, handler: { (photoResult) in
-//      switch photoResult {
-//      case let .success(image):
-//        OperationQueue.main.addOperation {
-//          self.imageView.image = image
-//        }
-//      case let .failure(error):
-//        print(error)
-//      }
-//    })
-//  }
 }

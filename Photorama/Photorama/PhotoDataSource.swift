@@ -10,7 +10,27 @@ import UIKit
 
 class PhotoDataSource: NSObject, UICollectionViewDataSource {
   
+  var photoStore: PhotoStore!
+  
   var photos = [Photo]()
+  
+  // MARK: - Public Method
+  
+  func loadPhotos(handler: @escaping () -> Void) {
+    photoStore.fetchInterestingPhotos { (photosResult) in
+      switch photosResult {
+      case let .success(photos):
+        self.photos = photos
+
+      default:
+        break
+      }
+      
+      handler()
+    }
+  }
+  
+  // MARK: - UICollectionViewDataSource
   
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return photos.count

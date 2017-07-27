@@ -33,6 +33,9 @@
                             <constraint firstAttribute="trailing" secondItem="9kB-8Q-SaS" secondAttribute="trailing" id="ozA-ap-5dR"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="imageView" destination="9kB-8Q-SaS" id="00c-Su-1Kn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

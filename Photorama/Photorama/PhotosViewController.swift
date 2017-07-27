@@ -17,13 +17,33 @@ class PhotosViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    photoStore.fetchInterestingPhotos { (photoResult) in
-      switch photoResult {
+    photoStore.fetchInterestingPhotos { (photosResult) in
+      switch photosResult {
       case let .success(photos):
         print("Get \(photos.count) photos.")
+        
+        if let photo = photos.first {
+          self.fetchAndDisplay(photo: photo)
+        }
+        
       case let .failure(error):
         print("Get error: \(error.localizedDescription)")
       }
     }
+  }
+  
+  // MARK: - Helper
+  
+  func fetchAndDisplay(photo: Photo) {
+    photoStore.fetchPhoto(photo, handler: { (photoResult) in
+      switch photoResult {
+      case let .success(image):
+        OperationQueue.main.addOperation {
+          self.imageView.image = image
+        }
+      case let .failure(error):
+        print(error)
+      }
+    })
   }
 }

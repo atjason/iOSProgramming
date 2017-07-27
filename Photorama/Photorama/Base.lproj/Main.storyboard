@@ -33,6 +33,7 @@
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Lvp-z6-iee">
                                             <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
+                                            <gestureRecognizers/>
                                         </imageView>
                                         <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="5TS-Ql-DR8">
                                             <rect key="frame" x="35" y="35" width="20" height="20"/>
@@ -51,6 +52,7 @@
                                 <connections>
                                     <outlet property="imageView" destination="Lvp-z6-iee" id="3eg-xO-nOF"/>
                                     <outlet property="indicator" destination="5TS-Ql-DR8" id="suS-gx-zCd"/>
+                                    <segue destination="ZLm-rm-XBV" kind="show" identifier="showPhoto" id="ng7-iE-PQa"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -64,6 +66,38 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jxp-hN-dUQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1311.2" y="1.3493253373313345"/>
+        </scene>
+        <!--Photo Detail View Controller-->
+        <scene sceneID="pW2-ux-Gu2">
+            <objects>
+                <viewController id="ZLm-rm-XBV" customClass="PhotoDetailViewController" customModule="Photorama" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8M7-Lr-GWz"/>
+                        <viewControllerLayoutGuide type="bottom" id="n92-Tz-0H8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8Q3-7P-4LG">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yJZ-Kb-FTH">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="yJZ-Kb-FTH" secondAttribute="trailing" id="5mq-jA-ikR"/>
+                            <constraint firstAttribute="bottom" secondItem="yJZ-Kb-FTH" secondAttribute="bottom" id="90G-ub-atv"/>
+                            <constraint firstItem="yJZ-Kb-FTH" firstAttribute="top" secondItem="8Q3-7P-4LG" secondAttribute="top" id="EMk-fO-jV7"/>
+                            <constraint firstItem="yJZ-Kb-FTH" firstAttribute="leading" secondItem="8Q3-7P-4LG" secondAttribute="leading" id="sye-R8-Rjb"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="yJZ-Kb-FTH" id="uQa-KA-wjB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rf4-QF-CKt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2188" y="1"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="6Gf-2t-NvK">

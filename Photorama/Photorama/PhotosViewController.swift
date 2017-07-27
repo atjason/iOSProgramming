@@ -48,6 +48,21 @@ class PhotosViewController: UICollectionViewController {
     }
   }
   
+  // MARK: - Segure
+  
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    guard segue.identifier == "showPhoto" else {
+      preconditionFailure("Invalid segue identifier: " + (segue.identifier ?? ""))
+    }
+    
+    if let photoView = segue.destination as? PhotoDetailViewController,
+      let index = collectionView?.indexPathsForSelectedItems?.first?.row {
+      
+      photoView.photo = photoDataSource.photos[index]
+      photoView.photoStore = photoStore
+    }
+  }
+  
   // MARK: - Helper
   
 }

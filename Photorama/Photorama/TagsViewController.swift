@@ -24,6 +24,35 @@ class TagsViewController: UITableViewController {
     updateTags()
   }
   
+  // MARK: - Action
+  
+  @IBAction func addTag(_ sender: UIBarButtonItem) {
+    let alert = UIAlertController()
+    alert.title = "Add Tag"
+    
+    alert.addTextField { (textField) in
+      textField.placeholder = "Tag title"
+    }
+    
+    let addAction = UIAlertAction(title: "Add", style: .default) { (action) in
+      guard let title = alert.textFields?.first?.text else {
+        return
+      }
+      
+//      Tag.init(entity: NSEntityDescription.init, insertInto: <#T##NSManagedObjectContext?#>)
+    }
+    alert.addAction(addAction)
+    
+    let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+    alert.addAction(cancelAction)
+    
+    present(alert, animated: true, completion: nil)
+  }
+  
+  @IBAction func done(_ sender: UIBarButtonItem) {
+    presentingViewController?.dismiss(animated: true, completion: nil)
+  }
+  
   // MARK: - UITableViewDelegate
   
   override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {

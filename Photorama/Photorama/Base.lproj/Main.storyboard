@@ -97,16 +97,32 @@
                                 </subviews>
                             </stackView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yJZ-Kb-FTH">
-                                <rect key="frame" x="0.0" y="100.5" width="375" height="566.5"/>
+                                <rect key="frame" x="0.0" y="101" width="375" height="522"/>
                             </imageView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fzy-TG-BRU">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="T7O-cb-0Dy"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem title="Tag" id="TCO-4R-HXT">
+                                        <connections>
+                                            <segue destination="M6o-uf-wx7" kind="show" id="OZ1-d9-fTy"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="Fzy-TG-BRU" secondAttribute="bottom" id="3Cb-NY-ee7"/>
                             <constraint firstAttribute="trailing" secondItem="yJZ-Kb-FTH" secondAttribute="trailing" id="5mq-jA-ikR"/>
-                            <constraint firstAttribute="bottom" secondItem="yJZ-Kb-FTH" secondAttribute="bottom" id="90G-ub-atv"/>
+                            <constraint firstAttribute="trailing" secondItem="Fzy-TG-BRU" secondAttribute="trailing" id="HWl-kL-2eQ"/>
                             <constraint firstItem="yJZ-Kb-FTH" firstAttribute="top" secondItem="Gfk-XO-GAE" secondAttribute="bottom" constant="8" id="Q80-ng-lEa"/>
+                            <constraint firstItem="Fzy-TG-BRU" firstAttribute="leading" secondItem="8Q3-7P-4LG" secondAttribute="leading" id="QTM-Sw-7tv"/>
                             <constraint firstItem="Gfk-XO-GAE" firstAttribute="top" secondItem="8M7-Lr-GWz" secondAttribute="bottom" constant="8" id="Zsh-6N-rPh"/>
                             <constraint firstItem="Gfk-XO-GAE" firstAttribute="centerX" secondItem="8Q3-7P-4LG" secondAttribute="centerX" id="dMN-oy-42r"/>
+                            <constraint firstItem="Fzy-TG-BRU" firstAttribute="top" secondItem="yJZ-Kb-FTH" secondAttribute="bottom" id="g74-GC-BBP"/>
                             <constraint firstItem="yJZ-Kb-FTH" firstAttribute="leading" secondItem="8Q3-7P-4LG" secondAttribute="leading" id="sye-R8-Rjb"/>
                         </constraints>
                     </view>
@@ -118,6 +134,71 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rf4-QF-CKt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2188" y="0.44977511244377816"/>
+        </scene>
+        <!--Tag-->
+        <scene sceneID="c1k-JR-dDE">
+            <objects>
+                <tableViewController id="6My-qD-bc6" customClass="TagsViewController" customModule="Photorama" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="ir4-b6-M6y">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="UITableViewCell" textLabel="vOH-Mb-Q0Z" style="IBUITableViewCellStyleDefault" id="pLu-d3-Oub">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pLu-d3-Oub" id="Qdo-pq-nDe">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vOH-Mb-Q0Z">
+                                            <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="6My-qD-bc6" id="gvT-pT-Anp"/>
+                            <outlet property="delegate" destination="6My-qD-bc6" id="d1A-3e-INg"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Tag" id="sj6-7B-Dxh">
+                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="ubW-RZ-GoO">
+                            <connections>
+                                <action selector="done:" destination="6My-qD-bc6" id="MEv-NE-Y3V"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="wLk-fU-bIs">
+                            <connections>
+                                <action selector="addTag:" destination="6My-qD-bc6" id="TR9-IQ-7mT"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Alu-YD-Ovd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4106" y="1"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="oBf-Z2-fBo">
+            <objects>
+                <navigationController id="M6o-uf-wx7" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Oak-Bx-sRs">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="6My-qD-bc6" kind="relationship" relationship="rootViewController" id="c3N-fx-oRP"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qp7-NF-jH0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3153" y="1"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="6Gf-2t-NvK">

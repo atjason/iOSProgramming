@@ -19,6 +19,7 @@ class TagsViewController: UITableViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    tableView.delegate = self
     tableView.dataSource = tagsDataSource
     
     updateTags()
@@ -62,29 +63,27 @@ class TagsViewController: UITableViewController {
   // MARK: - UITableViewDelegate
   
   override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-    // TODO Update selected status
-    cell.isSelected = (selectedIndexPaths.index(of: indexPath) != nil)
+    if selectedIndexPaths.index(of: indexPath) != nil {
+      cell.accessoryType = .checkmark
+    } else {
+      cell.accessoryType = .none
+    }
   }
   
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    if let indexPathIndex = selectedIndexPaths.index(of: indexPath) {
-      let tag = tagsDataSource.tags[indexPath.row]
-      let mutableTags = NSMutableSet(set: photo.tags!)
-      mutableTags.remove(tag)
-      photo.tags = mutableTags
-      
-      selectedIndexPaths.remove(at: indexPathIndex)
-      
-      // TODO Update selected status
-      
+    let tag = tagsDataSource.tags[indexPath.row]
+    
+    if let index = selectedIndexPaths.index(of: indexPath) {
+      selectedIndexPaths.remove(at: index)
+      photo.removeFromTags(tag)
     } else {
-      let tag = tagsDataSource.tags[indexPath.row]
-      photo.tags?.adding(tag)
-      
       selectedIndexPaths.append(indexPath)
-      
-      // TODO Update selected status
+      photo.addToTags(tag)
     }
+    
+    photoStore.save()
+    
+    tableView.reloadRows(at: [indexPath], with: .automatic)
   }
   
   // MARK: - Helper
@@ -94,11 +93,13 @@ class TagsViewController: UITableViewController {
       if case let .success(tags) = tagsResult {
         self.tagsDataSource.tags = tags
         
-        self.selectedIndexPaths.removeAll()
-        for tag in self.photo.tags! { // TODO
-          if let index = tags.index(of: tag as! Tag) { // TODO as!
-            let indexPath = IndexPath(row: index, section: 0)
-            self.selectedIndexPaths.append(indexPath)
+        if let photoTags = self.photo.tags as? Set<Tag> {
+          self.selectedIndexPaths.removeAll()
+          for tag in photoTags {
+            if let index = tags.index(of: tag) {
+              let indexPath = IndexPath(row: index, section: 0)
+              self.selectedIndexPaths.append(indexPath)
+            }
           }
         }
         

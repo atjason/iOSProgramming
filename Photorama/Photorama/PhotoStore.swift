@@ -54,12 +54,7 @@ class PhotoStore {
       return
     }
     
-    guard let url = URL(string: photo.urlString) else {
-      handler(PhotoResult.failure(PhotoError.invalidURL))
-      return
-    }
-    
-    let task = session.dataTask(with: url) { (data, response, error) in
+    let task = session.dataTask(with: photo.url) { (data, response, error) in
       if let data = data, let image = UIImage(data: data) {
         self.imageStore[photo.id] = image
         handler(PhotoResult.success(image))

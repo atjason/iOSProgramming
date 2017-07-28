@@ -86,6 +86,7 @@ struct FlickrAPI {
       return nil
     }
     
-    return Photo(id: id, title: title, farm: farm, server: server, secret: secret)
+    let url = Photo.generateURL(id: id, farm: farm, server: server, secret: secret)
+    return Photo(id: id, title: title, url: url)
   }
 }

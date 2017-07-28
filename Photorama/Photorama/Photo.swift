@@ -11,21 +11,18 @@ import Foundation
 class Photo {
   var id = ""
   var title = ""
-  var farm = 0
-  var server = ""
-  var secret = ""
+  var url: URL
   
-  var urlString: String {
-    let baseURL = "https://farm%d.staticflickr.com/%@/%@_%@.jpg"
-    return String(format: baseURL, farm, server, id, secret)
-  }
-  
-  init(id: String, title: String, farm: Int, server: String, secret: String) {
+  init(id: String, title: String, url: URL) {
     self.id = id
     self.title = title
-    self.farm = farm
-    self.server = server
-    self.secret = secret
+    self.url = url
+  }
+  
+  static func generateURL(id: String, farm: Int, server: String, secret: String) -> URL {
+    let baseURL = "https://farm%d.staticflickr.com/%@/%@_%@.jpg"
+    let urlString = String(format: baseURL, farm, server, id, secret)
+    return URL(string: urlString)!
   }
 }
 

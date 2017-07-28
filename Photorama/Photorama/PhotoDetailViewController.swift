@@ -39,4 +39,17 @@ class PhotoDetailViewController: UIViewController {
     
     timesLabel.text = "\(photo.times)"
   }
+  
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    switch segue.identifier {
+    case "showTags"?:
+      if let navigationController = segue.destination as? UINavigationController,
+        let tagsViewContoller = navigationController.topViewController as? TagsViewController {
+        tagsViewContoller.photo = photo
+        tagsViewContoller.photoStore = photoStore
+      }
+    default:
+      preconditionFailure("Invalid segue identifier.")
+    }
+  }
 }

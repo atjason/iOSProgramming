@@ -39,7 +39,13 @@ class TagsViewController: UITableViewController {
         return
       }
       
-//      Tag.init(entity: NSEntityDescription.init, insertInto: <#T##NSManagedObjectContext?#>)
+//      Tag.init(entity: NSEntityDescription.init, insertInto: )
+      
+      // TODO Selected new added tag.
+      
+      self.photoStore.save()
+      
+      self.updateTags()
     }
     alert.addAction(addAction)
     

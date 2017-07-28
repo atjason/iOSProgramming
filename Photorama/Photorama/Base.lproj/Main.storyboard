@@ -107,7 +107,7 @@
                                 <items>
                                     <barButtonItem title="Tag" id="TCO-4R-HXT">
                                         <connections>
-                                            <segue destination="M6o-uf-wx7" kind="show" id="OZ1-d9-fTy"/>
+                                            <segue destination="M6o-uf-wx7" kind="show" identifier="showTags" id="OZ1-d9-fTy"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>

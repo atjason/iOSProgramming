@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		96E60AFB1F2B6FCB00229507 /* Photo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E60AFA1F2B6FCB00229507 /* Photo+CoreDataProperties.swift */; };
 		96F285311F29675F002135E1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F285301F29675F002135E1 /* AppDelegate.swift */; };
 		96F285361F29675F002135E1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96F285341F29675F002135E1 /* Main.storyboard */; };
 		96F285381F29675F002135E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96F285371F29675F002135E1 /* Assets.xcassets */; };
@@ -20,10 +21,10 @@
 		96F285531F2A12A4002135E1 /* PhotoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F285521F2A12A4002135E1 /* PhotoDetailViewController.swift */; };
 		96F285561F2AD2DE002135E1 /* Photorama.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 96F285541F2AD2DE002135E1 /* Photorama.xcdatamodeld */; };
 		96F285591F2AD93E002135E1 /* Photo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F285571F2AD93E002135E1 /* Photo+CoreDataClass.swift */; };
-		96F285601F2AEC36002135E1 /* Photo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F2855F1F2AEC36002135E1 /* Photo+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		96E60AFA1F2B6FCB00229507 /* Photo+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Photo+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		96F2852D1F29675F002135E1 /* Photorama.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Photorama.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		96F285301F29675F002135E1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		96F285351F29675F002135E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -39,7 +40,6 @@
 		96F285521F2A12A4002135E1 /* PhotoDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoDetailViewController.swift; sourceTree = "<group>"; };
 		96F285551F2AD2DE002135E1 /* Photorama.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Photorama.xcdatamodel; sourceTree = "<group>"; };
 		96F285571F2AD93E002135E1 /* Photo+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Photo+CoreDataClass.swift"; sourceTree = "<group>"; };
-		96F2855F1F2AEC36002135E1 /* Photo+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Photo+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,7 +76,7 @@
 				96F285441F29684A002135E1 /* FlickrAPI.swift */,
 				96F285501F2A10FE002135E1 /* ImageStore.swift */,
 				96F285571F2AD93E002135E1 /* Photo+CoreDataClass.swift */,
-				96F2855F1F2AEC36002135E1 /* Photo+CoreDataProperties.swift */,
+				96E60AFA1F2B6FCB00229507 /* Photo+CoreDataProperties.swift */,
 				96F285461F296AFE002135E1 /* PhotoStore.swift */,
 				96F2854A1F29E136002135E1 /* PhotoDataSource.swift */,
 				96F2854C1F29E1FB002135E1 /* PhotoViewCell.swift */,
@@ -172,7 +172,7 @@
 				96F285471F296AFE002135E1 /* PhotoStore.swift in Sources */,
 				96F285561F2AD2DE002135E1 /* Photorama.xcdatamodeld in Sources */,
 				96F2854B1F29E136002135E1 /* PhotoDataSource.swift in Sources */,
-				96F285601F2AEC36002135E1 /* Photo+CoreDataProperties.swift in Sources */,
+				96E60AFB1F2B6FCB00229507 /* Photo+CoreDataProperties.swift in Sources */,
 				96F285531F2A12A4002135E1 /* PhotoDetailViewController.swift in Sources */,
 				96F285311F29675F002135E1 /* AppDelegate.swift in Sources */,
 			);
@@ -340,6 +340,7 @@
 				96F285411F29675F002135E1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

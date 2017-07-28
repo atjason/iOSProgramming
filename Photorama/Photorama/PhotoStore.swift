@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 enum PhotosResult {
   case success([Photo])
@@ -26,6 +27,15 @@ enum PhotoError: Error {
 class PhotoStore {
   
   var imageStore = ImageStore()
+  let persistentContainer: NSPersistentContainer = {
+    let container = NSPersistentContainer(name: "Photorama")
+    container.loadPersistentStores(completionHandler: { (description, error) in
+      if let error = error {
+        preconditionFailure("Failed to load persistent store with error: \(error.localizedDescription)")
+      }
+    })
+    return container
+  }()
   
   private let session: URLSession = {
     let config = URLSessionConfiguration.default
@@ -36,27 +46,45 @@ class PhotoStore {
     let url = FlickrAPI.interestingURLString
     let task = session.dataTask(with: url) { (data, response, error) in
       if let jsonData = data {
-        let photoResult = FlickrAPI.photos(ofJSON: jsonData)
-        handler(photoResult)
+        let photoResult = FlickrAPI.photos(ofJSON: jsonData, into: self.persistentContainer.viewContext)
+        switch photoResult {
+        case .success(_):
+          do {
+            try self.persistentContainer.viewContext.save()
+          } catch {
+            handler(.failure(error))
+          }
+          
+        case .failure(_):
+          handler(photoResult)
+        }
         
       } else if let error = error {
-        handler(PhotosResult.failure(error))
+        handler(.failure(error))
       } else {
-        handler(PhotosResult.failure(FlickrError.unknown))
+        handler(.failure(FlickrError.unknown))
       }
     }
     task.resume()
   }
   
   func fetchPhoto(_ photo: Photo, handler: @escaping (PhotoResult) -> Void) {
-    if let image = imageStore[photo.id] {
+    guard let photoID = photo.id else {
+      preconditionFailure("Need photo id to continue.")
+    }
+    
+    if let image = imageStore[photoID] {
       handler(PhotoResult.success(image))
       return
     }
     
-    let task = session.dataTask(with: photo.url) { (data, response, error) in
+    guard let photoURL = photo.url else {
+      preconditionFailure("Need photo id to continue.")
+    }
+    
+    let task = session.dataTask(with: photoURL as URL) { (data, response, error) in
       if let data = data, let image = UIImage(data: data) {
-        self.imageStore[photo.id] = image
+        self.imageStore[photoID] = image
         handler(PhotoResult.success(image))
       } else {
         let failureError = error ?? PhotoError.invalidData

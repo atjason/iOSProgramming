@@ -6,6 +6,7 @@
 //  Copyright © 2017 Jason Zheng. All rights reserved.
 //
 
+import CoreData
 import Foundation
 
 enum Method: String {
@@ -55,7 +56,7 @@ struct FlickrAPI {
     return components.url!
   }
   
-  static func photos(ofJSON jsonData: Data) -> PhotosResult {
+  static func photos(ofJSON jsonData: Data, into context: NSManagedObjectContext) -> PhotosResult {
     
     guard let json = try? JSONSerialization.jsonObject(with: jsonData, options: []) as? [String: Any],
       let photosJSON = json?["photos"] as? [String: Any],
@@ -65,7 +66,7 @@ struct FlickrAPI {
     
     var photos = [Photo]()
     for photoData in photoDataList {
-      if let photo = photo(ofJSON: photoData) {
+      if let photo = photo(ofJSON: photoData, into: context) {
         photos.append(photo)
       }
     }
@@ -77,7 +78,7 @@ struct FlickrAPI {
     return PhotosResult.success(photos)
   }
   
-  private static func photo(ofJSON json: [String: Any]) -> Photo? {
+  private static func photo(ofJSON json: [String: Any], into context: NSManagedObjectContext) -> Photo? {
     guard let id = json["id"] as? String,
       let title = json["title"] as? String,
       let farm = json["farm"] as? Int,
@@ -87,6 +88,15 @@ struct FlickrAPI {
     }
     
     let url = Photo.generateURL(id: id, farm: farm, server: server, secret: secret)
-    return Photo(id: id, title: title, url: url)
+    
+    var photo: Photo!
+    context.performAndWait {
+      photo = Photo(context: context)
+      photo.id = id
+      photo.title = title
+      photo.url = url as NSURL
+    }
+    
+    return photo
   }
 }

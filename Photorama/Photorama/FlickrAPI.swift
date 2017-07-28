@@ -109,6 +109,7 @@ struct FlickrAPI {
       photo.id = id
       photo.title = title
       photo.url = url as NSURL
+      photo.times = 0
     }
     
     return photo

@@ -112,6 +112,7 @@
                     </view>
                     <connections>
                         <outlet property="imageView" destination="yJZ-Kb-FTH" id="uQa-KA-wjB"/>
+                        <outlet property="timesLabel" destination="cj3-LX-Vf1" id="NT1-bj-uk5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rf4-QF-CKt" userLabel="First Responder" sceneMemberID="firstResponder"/>

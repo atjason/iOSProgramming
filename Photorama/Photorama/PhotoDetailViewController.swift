@@ -11,14 +11,10 @@ import CoreData
 
 class PhotoDetailViewController: UIViewController {
   
+  @IBOutlet var timesLabel: UILabel!
   @IBOutlet var imageView: UIImageView!
   
-  var photo: Photo! {
-    didSet {
-      navigationItem.title = photo.title
-    }
-  }
-  
+  var photo: Photo!
   var photoStore: PhotoStore!
   
   override func viewDidLoad() {
@@ -31,5 +27,12 @@ class PhotoDetailViewController: UIViewController {
         }
       }
     }
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    
+    navigationItem.title = photo.title
+    timesLabel.text = "\(photo.times)"
   }
 }

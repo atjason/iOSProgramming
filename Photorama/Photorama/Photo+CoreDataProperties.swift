@@ -19,5 +19,6 @@ extension Photo {
     @NSManaged public var id: String?
     @NSManaged public var title: String?
     @NSManaged public var url: NSURL?
+    @NSManaged public var times: Int32
 
 }

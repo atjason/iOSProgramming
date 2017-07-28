@@ -50,9 +50,6 @@ class PhotoStore {
   func fetchAllPhotos(handler: @escaping (PhotosResult) -> Void) {
     let request: NSFetchRequest<Photo> = Photo.fetchRequest()
     
-//    let sortDescriptor = NSSortDescriptor(key: #keyPath(Photo.id), ascending: true)
-//    request.sortDescriptors = [sortDescriptor]
-    
     let context = persistentContainer.viewContext
     context.perform {
       do {

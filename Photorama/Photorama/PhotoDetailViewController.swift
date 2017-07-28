@@ -33,6 +33,10 @@ class PhotoDetailViewController: UIViewController {
     super.viewWillAppear(animated)
     
     navigationItem.title = photo.title
+    
+    photo.times += 1
+    photoStore.save()
+    
     timesLabel.text = "\(photo.times)"
   }
 }

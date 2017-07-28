@@ -65,12 +65,7 @@ class PhotoStore {
       if let jsonData = data {
         let photoResult = FlickrAPI.photos(ofJSON: jsonData, into: self.persistentContainer.viewContext)
         if case .success(_) = photoResult {
-          do {
-            try self.persistentContainer.viewContext.save()
-          } catch {
-            handler(.failure(error))
-            return
-          }
+          self.save()
         }
         handler(photoResult)
         
@@ -107,5 +102,13 @@ class PhotoStore {
       }
     }
     task.resume()
+  }
+  
+  func save() {
+    do {
+      try persistentContainer.viewContext.save()
+    } catch {
+      assert(false)
+    }
   }
 }

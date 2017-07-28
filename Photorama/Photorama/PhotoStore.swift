@@ -47,17 +47,15 @@ class PhotoStore {
     let task = session.dataTask(with: url) { (data, response, error) in
       if let jsonData = data {
         let photoResult = FlickrAPI.photos(ofJSON: jsonData, into: self.persistentContainer.viewContext)
-        switch photoResult {
-        case .success(_):
+        if case .success(_) = photoResult {
           do {
             try self.persistentContainer.viewContext.save()
           } catch {
             handler(.failure(error))
+            return
           }
-          
-        case .failure(_):
-          handler(photoResult)
         }
+        handler(photoResult)
         
       } else if let error = error {
         handler(.failure(error))

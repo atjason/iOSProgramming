@@ -20,10 +20,10 @@ class TagsDataSource: NSObject, UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let viewCell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCell")
+    let viewCell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCell")!
     
     let tag = tags[indexPath.row]
-    viewCell?.textLabel?.text = tag.title
+    viewCell.textLabel?.text = tag.title
     
     return viewCell
   }

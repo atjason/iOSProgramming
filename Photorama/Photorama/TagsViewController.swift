@@ -44,6 +44,10 @@ class TagsViewController: UITableViewController {
       let newTag = NSEntityDescription.insertNewObject(forEntityName: "Tag", into: context)
       newTag.setValue(title, forKey: "title")
       
+      if let realTag = newTag as? Tag {
+        self.photo.addToTags(realTag)
+      }
+      
       self.photoStore.save()
       
       self.updateTags()

@@ -79,15 +79,34 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Gfk-XO-GAE">
+                                <rect key="frame" x="132" y="72" width="111" height="20.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="View Times:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9bH-XV-KOZ">
+                                        <rect key="frame" x="0.0" y="0.0" width="92.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cj3-LX-Vf1">
+                                        <rect key="frame" x="100.5" y="0.0" width="10.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yJZ-Kb-FTH">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="100.5" width="375" height="566.5"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="yJZ-Kb-FTH" secondAttribute="trailing" id="5mq-jA-ikR"/>
                             <constraint firstAttribute="bottom" secondItem="yJZ-Kb-FTH" secondAttribute="bottom" id="90G-ub-atv"/>
-                            <constraint firstItem="yJZ-Kb-FTH" firstAttribute="top" secondItem="8Q3-7P-4LG" secondAttribute="top" id="EMk-fO-jV7"/>
+                            <constraint firstItem="yJZ-Kb-FTH" firstAttribute="top" secondItem="Gfk-XO-GAE" secondAttribute="bottom" constant="8" id="Q80-ng-lEa"/>
+                            <constraint firstItem="Gfk-XO-GAE" firstAttribute="top" secondItem="8M7-Lr-GWz" secondAttribute="bottom" constant="8" id="Zsh-6N-rPh"/>
+                            <constraint firstItem="Gfk-XO-GAE" firstAttribute="centerX" secondItem="8Q3-7P-4LG" secondAttribute="centerX" id="dMN-oy-42r"/>
                             <constraint firstItem="yJZ-Kb-FTH" firstAttribute="leading" secondItem="8Q3-7P-4LG" secondAttribute="leading" id="sye-R8-Rjb"/>
                         </constraints>
                     </view>
@@ -97,7 +116,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rf4-QF-CKt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2188" y="1"/>
+            <point key="canvasLocation" x="2188" y="0.44977511244377816"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="6Gf-2t-NvK">

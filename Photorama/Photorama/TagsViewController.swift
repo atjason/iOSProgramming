@@ -28,11 +28,11 @@ class TagsViewController: UITableViewController {
   // MARK: - Action
   
   @IBAction func addTag(_ sender: UIBarButtonItem) {
-    let alert = UIAlertController()
-    alert.title = "Add Tag"
+    let alert = UIAlertController(title: "Add Tag", message: nil, preferredStyle: .alert)
     
     alert.addTextField { (textField) in
       textField.placeholder = "Tag title"
+      textField.autocapitalizationType = .words
     }
     
     let addAction = UIAlertAction(title: "Add", style: .default) { (action) in
@@ -40,9 +40,9 @@ class TagsViewController: UITableViewController {
         return
       }
       
-//      Tag.init(entity: NSEntityDescription.init, insertInto: )
-      
-      // TODO Selected new added tag.
+      let context = self.photoStore.persistentContainer.viewContext
+      let newTag = NSEntityDescription.insertNewObject(forEntityName: "Tag", into: context)
+      newTag.setValue(title, forKey: "title")
       
       self.photoStore.save()
       

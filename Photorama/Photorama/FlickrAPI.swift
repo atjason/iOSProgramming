@@ -87,6 +87,20 @@ struct FlickrAPI {
       return nil
     }
     
+    // Fetch photo from Core Data if exsiting.
+    
+    var photos: [Photo]?
+    let request: NSFetchRequest<Photo> = Photo.fetchRequest()
+    request.predicate = NSPredicate(format: "\(#keyPath(Photo.id)) == \(id)")
+    context.performAndWait {
+      photos = try? context.fetch(request)
+    }
+    if let existingPhoto = photos?.first {
+      return existingPhoto
+    }
+    
+    // Generate new photo and insert into Core Data.
+    
     let url = Photo.generateURL(id: id, farm: farm, server: server, secret: secret)
     
     var photo: Photo!

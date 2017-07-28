@@ -42,6 +42,23 @@ class PhotoStore {
     return URLSession(configuration: config)
   }()
   
+  func fetchAllPhotos(handler: @escaping (PhotosResult) -> Void) {
+    let request: NSFetchRequest<Photo> = Photo.fetchRequest()
+    
+//    let sortDescriptor = NSSortDescriptor(key: #keyPath(Photo.id), ascending: true)
+//    request.sortDescriptors = [sortDescriptor]
+    
+    let context = persistentContainer.viewContext
+    context.perform {
+      do {
+        let photos = try context.fetch(request)
+        handler(.success(photos))
+      } catch {
+        handler(.failure(error))
+      }
+    }
+  }
+  
   func fetchInterestingPhotos(handler: @escaping (PhotosResult) -> Void) {
     let url = FlickrAPI.interestingURLString
     let task = session.dataTask(with: url) { (data, response, error) in

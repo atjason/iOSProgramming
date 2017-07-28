@@ -28,6 +28,8 @@ class PhotosViewController: UICollectionViewController {
     super.viewDidLoad()
     
     collectionView?.delegate = self
+    
+    updateDataSource()
   }
   
   // MARK: - UICollectionViewDelegate
@@ -65,4 +67,17 @@ class PhotosViewController: UICollectionViewController {
   
   // MARK: - Helper
   
+  func updateDataSource() {
+    photoStore.fetchAllPhotos { (photosResult) in
+      if case let .success(photos) = photosResult {
+        self.photoDataSource.photos = photos
+      } else {
+        self.photoDataSource.photos.removeAll()
+      }
+      
+      OperationQueue.main.addOperation {
+        self.collectionView?.reloadData()
+      }
+    }
+  }
 }

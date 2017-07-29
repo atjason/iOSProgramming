@@ -71,9 +71,9 @@ class PhotoStore {
     context.perform {
       do {
         let tags = try context.fetch(request)
-        handler(TagsResult.success(tags))
+        handler(.success(tags))
       } catch {
-        handler(TagsResult.failure(error))
+        handler(.failure(error))
       }
     }
   }

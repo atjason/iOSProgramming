@@ -92,8 +92,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="2Wh-gc-Ljb">
-                                <rect key="frame" x="16" y="72" width="343" height="587"/>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gtP-GN-ogd">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="fGU-ht-8Mk"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem systemItem="camera" id="PV7-pp-aE7">
+                                        <connections>
+                                            <action selector="takePhoto:" destination="zdq-tP-pwT" id="GTl-eQ-3re"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="2Wh-gc-Ljb">
+                                <rect key="frame" x="16" y="72" width="343" height="543"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="hqq-e3-Gg2">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="134.5"/>
@@ -171,25 +184,12 @@
                                         </constraints>
                                         <variation key="heightClass=compact" alignment="fill"/>
                                     </stackView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="248" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rwe-7u-MTu">
-                                        <rect key="frame" x="0.0" y="142.5" width="343" height="444.5"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="248" translatesAutoresizingMaskIntoConstraints="NO" id="Rwe-7u-MTu">
+                                        <rect key="frame" x="0.0" y="142.5" width="343" height="400.5"/>
                                     </imageView>
                                 </subviews>
                                 <variation key="heightClass=compact" axis="horizontal" distribution="fillEqually"/>
                             </stackView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gtP-GN-ogd">
-                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="fGU-ht-8Mk"/>
-                                </constraints>
-                                <items>
-                                    <barButtonItem systemItem="camera" id="PV7-pp-aE7">
-                                        <connections>
-                                            <action selector="takePhoto:" destination="zdq-tP-pwT" id="GTl-eQ-3re"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
@@ -199,6 +199,7 @@
                             <constraint firstItem="NYW-sz-25P" firstAttribute="top" secondItem="gtP-GN-ogd" secondAttribute="bottom" id="QH4-sj-VOt"/>
                             <constraint firstItem="2Wh-gc-Ljb" firstAttribute="trailing" secondItem="7h3-rq-ABp" secondAttribute="trailingMargin" id="SJI-mR-QxV"/>
                             <constraint firstItem="2Wh-gc-Ljb" firstAttribute="leading" secondItem="7h3-rq-ABp" secondAttribute="leadingMargin" id="UwO-Sp-uk5"/>
+                            <constraint firstItem="gtP-GN-ogd" firstAttribute="top" secondItem="2Wh-gc-Ljb" secondAttribute="bottom" constant="8" id="Vyx-nl-57S"/>
                             <constraint firstItem="2Wh-gc-Ljb" firstAttribute="top" secondItem="nMd-Hy-7bC" secondAttribute="bottom" constant="8" id="bD9-cs-Ogz"/>
                         </constraints>
                         <connections>
